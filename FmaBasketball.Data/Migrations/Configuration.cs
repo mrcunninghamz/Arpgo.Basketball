@@ -1,31 +1,39 @@
+using System.Linq.Expressions;
+using FmaBasketball.Data.Models;
+
 namespace FmaBasketball.Data.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<FmaBasketball.Data.FmaBasketballDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<FmaBasketballDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(FmaBasketball.Data.FmaBasketballDbContext context)
+        protected override void Seed(FmaBasketballDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            context.Reasons.AddOrUpdate(
+                    x => x.Name,
+                    new Reason { Id = 1, Name = "Top 8"},
+                    new Reason { Id = 2, Name = "Out of state" },
+                    new Reason { Id = 3, Name = "New" },
+                    new Reason { Id = 4, Name = "Recreational" },
+                    new Reason { Id = 5, Name = "Other" }
+                );
+            context.DocumentTypes.AddOrUpdate(
+                    x => x.Name,
+                    new DocumentType { Id = 1, Name = "Photo Id" },
+                    new DocumentType { Id = 2, Name = "Birth Certificate" },
+                    new DocumentType { Id = 3, Name = "Marriage Certificate" },
+                    new DocumentType { Id = 4, Name = "Adoption Papers" }
+                );
+            context.Divisions.AddOrUpdate(
+                    x => x.Name,
+                    new Division { Id = 1, Name = "A" },
+                    new Division { Id = 2, Name = "B" }
+                );
         }
     }
 }

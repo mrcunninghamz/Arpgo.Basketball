@@ -58,14 +58,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\DivisionConfiguration.cs" />
+    <Compile Include="Configurations\PlayerConfiguration.cs" />
+    <Compile Include="Configurations\ReasonConfiguration.cs" />
     <Compile Include="Configurations\TeamConfiguration.cs" />
+    <Compile Include="Enums\DivisionType.cs" />
+    <Compile Include="Enums\DocumentType.cs" />
+    <Compile Include="Enums\ReasonType.cs" />
     <Compile Include="FmaBasketballDbContext.cs" />
     <Compile Include="IFmaBasketballDbContext.cs" />
     <Compile Include="Migrations\201604301525490_initial.cs" />
     <Compile Include="Migrations\201604301525490_initial.Designer.cs">
       <DependentUpon>201604301525490_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604302021140_baseDataBase.cs" />
+    <Compile Include="Migrations\201604302021140_baseDataBase.Designer.cs">
+      <DependentUpon>201604302021140_baseDataBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\Division.cs" />
+    <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\DocumentType.cs" />
+    <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\Reason.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -83,6 +99,12 @@
     <EmbeddedResource Include="Migrations\201604301525490_initial.resx">
       <DependentUpon>201604301525490_initial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604302021140_baseDataBase.resx">
+      <DependentUpon>201604302021140_baseDataBase.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Seeds\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

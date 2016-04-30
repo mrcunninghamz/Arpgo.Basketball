@@ -21,7 +21,11 @@ namespace FmaBasketball.Data
         {
         }
 
-        public IDbSet<Team> Persons { get; set; }
+        public IDbSet<Team> Teams { get; set; }
+        public IDbSet<Player> Players { get; set; }
+        public IDbSet<Division> Divisions { get; set; }
+        public IDbSet<DocumentType> DocumentTypes { get; set; }
+        public IDbSet<Reason> Reasons { get; set; }
 
 
         public static FmaBasketballDbContext Create()
@@ -74,11 +78,9 @@ namespace FmaBasketball.Data
             var container = new CompositionContainer(catalog);
             container.ComposeParts(contextConfiguration);
 
-            foreach (var configuration in
-                contextConfiguration.Configurations)
+            foreach (var configuration in contextConfiguration.Configurations)
             {
-                configuration.AddConfiguration(
-                    modelBuilder.Configurations);
+                configuration.AddConfiguration(modelBuilder.Configurations);
             }
         }
     }

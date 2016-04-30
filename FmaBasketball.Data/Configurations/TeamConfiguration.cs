@@ -11,8 +11,18 @@ namespace FmaBasketball.Data.Configurations
     {
         public TeamConfiguration()
         {
-            ToTable("teams");
-            // ... more configuration         
+            ToTable("Teams");
+
+            //Required
+            Property(t => t.Name).IsRequired();
+            Property(t => t.CaptainName).IsRequired();
+            Property(t => t.Email).IsRequired();
+            Property(t => t.HomePhoneNumber).IsRequired();
+
+            //Optional
+            Property(t => t.OtherReason).IsOptional();
+
+            HasMany(t => t.Players).WithRequired(p => p.Team);
         }
 
         public void AddConfiguration(ConfigurationRegistrar registrar)
