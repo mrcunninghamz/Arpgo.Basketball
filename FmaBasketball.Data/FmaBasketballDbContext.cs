@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using Fma.Core.Entity;
 using FmaBasketball.Data.Models;
@@ -11,14 +14,13 @@ using Microsoft.AspNet.Identity.EntityFramework;
 namespace FmaBasketball.Data
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
-
     public class FmaBasketballDbContext : IdentityDbContext<ApplicationUser>, IFmaBasketballDbContext
     {
         public FmaBasketballDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DefaultConnection", false)
         {
         }
-        
+
         public IDbSet<Team> Persons { get; set; }
 
 
@@ -29,7 +31,7 @@ namespace FmaBasketball.Data
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            ConfigureContext(modelBuilder);
             base.OnModelCreating(modelBuilder);
         }
 
@@ -37,43 +39,47 @@ namespace FmaBasketball.Data
         {
             var modifiedEntries = ChangeTracker.Entries()
                 .Where(x => x.Entity is IAuditableEntity
-                    && (x.State == System.Data.Entity.EntityState.Added || x.State == System.Data.Entity.EntityState.Modified));
+                    && (x.State == EntityState.Added || x.State == EntityState.Modified));
 
             foreach (var entry in modifiedEntries)
             {
                 var entity = entry.Entity as IAuditableEntity;
-                if (entity != null)
+                if (entity == null) continue;
+
+                var identityName = Thread.CurrentPrincipal.Identity.Name;
+                var now = DateTime.UtcNow;
+
+                if (entry.State == EntityState.Added)
                 {
-                    var identityName = Thread.CurrentPrincipal.Identity.Name;
-                    var now = DateTime.UtcNow;
-
-                    if (entry.State == System.Data.Entity.EntityState.Added)
-                    {
-                        entity.CreatedBy = identityName;
-                        entity.CreatedDate = now;
-                    }
-                    else
-                    {
-                        base.Entry(entity).Property(x => x.CreatedBy).IsModified = false;
-                        base.Entry(entity).Property(x => x.CreatedDate).IsModified = false;
-                    }
-
-                    entity.UpdatedBy = identityName;
-                    entity.UpdatedDate = now;
+                    entity.CreatedBy = identityName;
+                    entity.CreatedDate = now;
                 }
+                else
+                {
+                    base.Entry(entity).Property(x => x.CreatedBy).IsModified = false;
+                    base.Entry(entity).Property(x => x.CreatedDate).IsModified = false;
+                }
+
+                entity.UpdatedBy = identityName;
+                entity.UpdatedDate = now;
             }
 
             return base.SaveChanges();
         }
-    }
 
-    public interface IFmaBasketballDbContext
-    {
-        IDbSet<Team> Persons { get; set; }
+        private static void ConfigureContext(DbModelBuilder modelBuilder)
+        {
+            var contextConfiguration = new ContextConfiguration();
+            var catalog = new AssemblyCatalog(Assembly.GetExecutingAssembly());
+            var container = new CompositionContainer(catalog);
+            container.ComposeParts(contextConfiguration);
 
-        DbSet<TEntity> Set<TEntity>() where TEntity : class;
-        DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
-
-        int SaveChanges();
+            foreach (var configuration in
+                contextConfiguration.Configurations)
+            {
+                configuration.AddConfiguration(
+                    modelBuilder.Configurations);
+            }
+        }
     }
 }

@@ -3,12 +3,12 @@ namespace FmaBasketball.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initialCreate : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Team",
+                "dbo.teams",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -107,7 +107,7 @@ namespace FmaBasketball.Data.Migrations
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Team");
+            DropTable("dbo.teams");
         }
     }
 }

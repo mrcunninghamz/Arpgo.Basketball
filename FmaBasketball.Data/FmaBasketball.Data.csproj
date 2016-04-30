@@ -47,6 +47,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -57,10 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\TeamConfiguration.cs" />
     <Compile Include="FmaBasketballDbContext.cs" />
-    <Compile Include="Migrations\201604242349126_initialCreate.cs" />
-    <Compile Include="Migrations\201604242349126_initialCreate.Designer.cs">
-      <DependentUpon>201604242349126_initialCreate.cs</DependentUpon>
+    <Compile Include="IFmaBasketballDbContext.cs" />
+    <Compile Include="Migrations\201604301525490_initial.cs" />
+    <Compile Include="Migrations\201604301525490_initial.Designer.cs">
+      <DependentUpon>201604301525490_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Team.cs" />
@@ -77,8 +80,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604242349126_initialCreate.resx">
-      <DependentUpon>201604242349126_initialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604301525490_initial.resx">
+      <DependentUpon>201604301525490_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
