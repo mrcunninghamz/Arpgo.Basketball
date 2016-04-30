@@ -8,7 +8,7 @@ namespace FmaBasketball.Data.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.teams",
+                "dbo.Teams",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -107,7 +107,7 @@ namespace FmaBasketball.Data.Migrations
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.teams");
+            DropTable("dbo.Teams");
         }
     }
 }
