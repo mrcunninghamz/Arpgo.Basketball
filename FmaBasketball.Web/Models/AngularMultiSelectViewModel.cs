@@ -1,8 +1,8 @@
 namespace FmaBasketball.Web.Models
 {
-    public class AngularMultiSelectViewModel
+    public class AngularSelectItemViewModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string Label { get; set; }
     }

@@ -13,5 +13,10 @@ namespace FmaBasketball.Web.Areas.Team.Controllers
         {
             return View();
         }
+
+        public ActionResult Thanks()
+        {
+            return View();
+        }
     }
 }

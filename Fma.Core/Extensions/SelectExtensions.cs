@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Reflection;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 
@@ -11,7 +10,6 @@ namespace Fma.Core.Extensions
 {
     public static class SelectExtensions
     {
-
         public static string GetInputName<TModel, TProperty>(Expression<Func<TModel, TProperty>> expression)
         {
             if (expression.Body.NodeType == ExpressionType.Call)
@@ -75,5 +73,34 @@ namespace Fma.Core.Extensions
 
             return new SelectList(items, "Value", "Text", selectedItem);
         }
+
+        public static List<EnumAttributes> ToEnumAttributes(Type enumType, string selectedItem)
+        {
+            var items = new List<EnumAttributes>();
+            foreach (var item in Enum.GetValues(enumType))
+            {
+                var field = enumType.GetField(item.ToString());
+                var attribute = field.GetCustomAttributes(typeof(DescriptionAttribute), true).FirstOrDefault();
+                var discription = attribute == null ? item.ToString() : ((DescriptionAttribute)attribute).Description;
+                var listItem = new EnumAttributes
+                {
+                    Value = ((int)item).ToString(),
+                    StringValue = item.ToString(),
+                    Description = discription
+                };
+                items.Add(listItem);
+            }
+
+            return items;
+        }
+    }
+    
+    public class EnumAttributes
+    {
+        public string Value { get; set; }
+
+        public string Description { get; set; }
+
+        public string StringValue { get; set; }
     }
 }

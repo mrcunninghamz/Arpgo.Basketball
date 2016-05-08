@@ -9,7 +9,7 @@ var Fma;
             }
             HomeController.$inject = ["$scope"];
             return HomeController;
-        })();
+        }());
         Controllers.HomeController = HomeController;
         var HomeModel = (function () {
             function HomeModel() {
@@ -17,7 +17,7 @@ var Fma;
                 this.lastName = "Doe";
             }
             return HomeModel;
-        })();
+        }());
         Controllers.HomeModel = HomeModel;
         angular.element(document)
             .ready(function () {

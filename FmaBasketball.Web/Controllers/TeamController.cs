@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Web.Http;
-using System.Web.Mvc;
-using Fma.Core.Enums;
 using Fma.Core.Extensions;
 using FmaBasketball.Data;
-using FmaBasketball.Data.Enums;
+using FmaBasketball.Data.Models;
 using FmaBasketball.Web.Models;
 
 namespace FmaBasketball.Web.Controllers
@@ -17,49 +15,22 @@ namespace FmaBasketball.Web.Controllers
         {
             _dbContext = dbContext;
         }
-
-        [System.Web.Http.HttpGet]
-        public IHttpActionResult GetDivisions(string type)
+        
+        [HttpPost]
+        public IHttpActionResult Post(RegisterTeamViewModel viewModel)
         {
-            SelectList selectList;
-
-            switch (type)
+            try
             {
-                case "Divisions":
-                    selectList = SelectExtensions.ToSelectList(typeof(DivisionType), null);
-                    break;
-                case "Reasons":
-                    selectList = SelectExtensions.ToSelectList(typeof(ReasonType), null);
-                    break;
-                case "AReasons":
-                    selectList = SelectExtensions.ToSelectList(typeof(AReasonsType), null);
-                    break;
-                case "BReasons":
-                    selectList = SelectExtensions.ToSelectList(typeof(BReasonsType), null);
-                    break;
-                case "States":
-                    selectList = SelectExtensions.ToSelectList(typeof(StatesAndCountriesType), null);
-                    break;
-                default:
-                    selectList = new SelectList(null);
-                    break;
+                var team = viewModel.MapTo(new Team());
+                _dbContext.Teams.Add(team);
+                _dbContext.SaveChanges();
 
+                return Ok();
             }
-            
-            var responseObject = new List<AngularMultiSelectViewModel>();
-            foreach (SelectListItem item in selectList.Items)
+            catch (Exception ex)
             {
-                responseObject.Add(new AngularMultiSelectViewModel {Id = int.Parse(item.Value), Label = item.Text});
-
+                return InternalServerError(ex);
             }
-
-            return Ok(new { Data = responseObject });
-        }
-
-        [System.Web.Http.HttpPost]
-        public IHttpActionResult Register(RegisterTeamViewModel viewModel)
-        {
-            return Ok();
         }
     }
 }

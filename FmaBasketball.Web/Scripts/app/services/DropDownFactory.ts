@@ -3,7 +3,23 @@
         static $inject = ["$resource"];
         
         constructor($resource: angular.resource.IResourceService) {
-            return $resource("/api/Team/GetDivisions");
+            return $resource("/api/Utility/GetType");
         }
     }
+
+    export class TeamFactory {
+        static $inject = ["$resource"];
+
+        constructor($resource: angular.resource.IResourceService) {
+            return $resource("/api/Team/:id");
+        }
+    }
+
+    angular.element(document)
+        .ready(() => {
+            var services = angular.module("Services", ["ngResource"]);
+            services.factory("DropDownService", DropDownFactory);
+            services.factory("TeamService", TeamFactory);
+
+        });
 }

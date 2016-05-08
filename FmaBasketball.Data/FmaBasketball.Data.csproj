@@ -76,9 +76,6 @@
       <DependentUpon>201604302021140_baseDataBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201605081503429_PlayerAndTeamUpdate.cs" />
-    <Compile Include="Migrations\201605081503429_PlayerAndTeamUpdate.Designer.cs">
-      <DependentUpon>201605081503429_PlayerAndTeamUpdate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Division.cs" />
     <Compile Include="Models\Document.cs" />
@@ -104,9 +101,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604302021140_baseDataBase.resx">
       <DependentUpon>201604302021140_baseDataBase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605081503429_PlayerAndTeamUpdate.resx">
-      <DependentUpon>201605081503429_PlayerAndTeamUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

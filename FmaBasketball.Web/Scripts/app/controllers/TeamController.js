@@ -4,44 +4,30 @@ var Fma;
     var Controllers;
     (function (Controllers) {
         var RegisterTeamController = (function () {
-            function RegisterTeamController($scope, divisionService) {
+            function RegisterTeamController($scope, $window, divisionService, teamService) {
                 var _this = this;
-                this.computeErrorState = function (formField, newValue) {
-                    if (newValue === "") {
-                        formField.$error.required = true;
-                        formField.$invalid = true;
-                    }
-                };
-                this.initiateDropDowns = function () {
+                this.InitiateDropDowns = function () {
                     _this.DropDownService.get({ type: "Divisions" }, function (response) {
-                        response.Data.unshift(_this.Scope.Model.SelectedDivision);
                         _this.Scope.Divisions = response.Data;
                     });
                     _this.DropDownService.get({ type: "Reasons" }, function (response) {
-                        response.Data.unshift(_this.Scope.Model.SelectedReason);
                         _this.Scope.Reasons = response.Data;
                     });
                     _this.DropDownService.get({ type: "States" }, function (response) {
-                        response.Data.unshift(_this.Scope.Model.SelectedState);
                         _this.Scope.States = response.Data;
                     });
                 };
-                this.initiateWatches = function () {
-                    _this.Scope.$watch("Model.SelectedDivision", function (newValue, oldValue) {
+                this.InitiateWatches = function () {
+                    _this.Scope.$watch("Model.Division", function (newValue, oldValue) {
                         if (newValue != oldValue) {
-                            _this.Scope.Model.Division = newValue.Id;
                             switch (newValue.Id) {
                                 case 1:
                                     _this.DropDownService.get({ type: "AReasons" }, function (response) {
-                                        _this.Scope.Model.SelectedReason = { Id: "", Label: "Select A Reason" };
-                                        response.Data.unshift(_this.Scope.Model.SelectedReason);
                                         _this.Scope.Reasons = response.Data;
                                     });
                                     break;
                                 case 2:
                                     _this.DropDownService.get({ type: "BReasons" }, function (response) {
-                                        _this.Scope.Model.SelectedReason = { Id: "", Label: "Select A Reason" };
-                                        response.Data.unshift(_this.Scope.Model.SelectedReason);
                                         _this.Scope.Reasons = response.Data;
                                         _this.Scope.Model.Reason = null;
                                     });
@@ -51,61 +37,53 @@ var Fma;
                         }
                     });
                     _this.Scope.$watch("form.Division.$viewValue.Id", function (newValue, oldValue) {
-                        _this.computeErrorState(_this.Scope.form.Division, newValue);
-                    });
-                    _this.Scope.$watch("Model.SelectedReason", function (newValue, oldValue) {
-                        if (newValue != oldValue) {
-                            _this.Scope.Model.Reason = newValue.Id;
-                        }
+                        _this.ComputeErrorState(_this.Scope.form.Division, newValue);
                     });
                     _this.Scope.$watch("form.Reason.$viewValue.Id", function (newValue, oldValue) {
-                        _this.computeErrorState(_this.Scope.form.Reason, newValue);
-                    });
-                    _this.Scope.$watch("Model.SelectedState", function (newValue, oldValue) {
-                        if (newValue != oldValue) {
-                            _this.Scope.Model.State = newValue.Id;
-                        }
+                        _this.ComputeErrorState(_this.Scope.form.Reason, newValue);
                     });
                     _this.Scope.$watch("form.State.$viewValue.Id", function (newValue, oldValue) {
-                        _this.computeErrorState(_this.Scope.form.State, newValue);
+                        _this.ComputeErrorState(_this.Scope.form.State, newValue);
                     });
                 };
+                this.ComputeErrorState = function (formField, newValue) {
+                    if (newValue === "") {
+                        formField.$error.required = true;
+                        formField.$invalid = true;
+                        _this.Scope.form.$invalid = true;
+                    }
+                };
                 this.Scope = $scope;
-                this.Scope.Model = new Fma.Models.Team();
+                this.Window = $window;
                 this.DropDownService = divisionService;
-                this.initiateDropDowns();
-                this.initiateWatches();
+                this.TeamService = teamService;
+                this.Scope.Model = new Fma.Models.Team();
+                this.InitiateDropDowns();
+                this.InitiateWatches();
                 this.Scope.Update = function (team) {
                     _this.Scope.$broadcast("show-errors-check-validity");
                     if (_this.Scope.form.$valid) {
+                        _this.TeamService.save(_this.Scope.Model, function () {
+                            _this.Window.location.href = "/Team/Register/Thanks";
+                        });
                     }
                 };
-                this.Scope.Reset = function (form) {
-                    $scope.$broadcast("show-errors-reset");
-                    if (form) {
-                        form.$setPristine();
-                        form.$setUntouched();
-                    }
-                };
+                //this.Scope.Reset = form => {
+                //    $scope.$broadcast("show-errors-reset");
+                //    if (form) {
+                //        form.$setPristine();
+                //        form.$setUntouched();
+                //    }
+                //}
             }
-            RegisterTeamController.$inject = ["$scope", "DropDownService"];
+            RegisterTeamController.$inject = ["$scope", "$window", "DropDownService", "TeamService"];
             return RegisterTeamController;
-        })();
+        }());
         Controllers.RegisterTeamController = RegisterTeamController;
         angular.element(document)
             .ready(function () {
             angular.module("fmaBasketballApp").controller("RegisterTeamController", RegisterTeamController);
         });
     })(Controllers = Fma.Controllers || (Fma.Controllers = {}));
-})(Fma || (Fma = {}));
-var Fma;
-(function (Fma) {
-    var Services;
-    (function (Services) {
-        angular.element(document)
-            .ready(function () {
-            angular.module("Services", ["ngResource"]).factory("DropDownService", Fma.Services.DropDownFactory);
-        });
-    })(Services = Fma.Services || (Fma.Services = {}));
 })(Fma || (Fma = {}));
 //# sourceMappingURL=TeamController.js.map

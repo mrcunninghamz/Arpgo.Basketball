@@ -3,7 +3,8 @@ using FmaBasketball.Data.Enums;
 
 namespace FmaBasketball.Web.Models
 {
-    public class RegisterTeamViewModel
+    public class 
+        RegisterTeamViewModel
     {
         [Required]
         [Display(Name = "Team Name")]
@@ -11,7 +12,7 @@ namespace FmaBasketball.Web.Models
         
         [Required]
         [Display(Name = "Team Captain")]
-        public string CaptianName { get; set; }
+        public string CaptainName { get; set; }
 
         [Required]
         [EmailAddress]
@@ -19,17 +20,19 @@ namespace FmaBasketball.Web.Models
         public string Email { get; set; }
 
         [Display(Name = "Preferred Division")]
-        public DivisionType Division { get; set; }
+        public AngularSelectItemViewModel Division { get; set; }
         
         [Display(Name = "Reason")]
-        public ReasonType Reason { get; set; }
+        public AngularSelectItemViewModel Reason { get; set; }
 
         [Display(Name = "Reason for other")]
         public string OtherReason { get; set; }
 
         [Required]
+        [Display(Name = "Home Phone")]
         public string HomePhoneNumber { get; set; }
 
+        [Display(Name = "Alternate Phone")]
         public string AlternatePhoneNumber { get; set; }
 
 
@@ -43,7 +46,7 @@ namespace FmaBasketball.Web.Models
 
         [Required]
         [Display(Name = "State/Country")]
-        public string State { get; set; }
+        public AngularSelectItemViewModel State { get; set; }
 
         [Required]
         public string Zip { get; set; }

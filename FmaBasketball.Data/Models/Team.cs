@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using Fma.Core.Entity;
 
 namespace FmaBasketball.Data.Models
@@ -17,7 +18,14 @@ namespace FmaBasketball.Data.Models
         public string State { get; set; }
         public string Zip { get; set; }
 
+        ///foreign key maps otherwise use fluentAPI
+        public int Division_Id { get; set; }
+        public int Reason_Id { get; set; }
+
+        [ForeignKey("Division_Id")]
         public virtual Division Division { get; set; }
+
+        [ForeignKey("Reason_Id")]
         public virtual Reason Reason { get; set; }
 
         public virtual ICollection<Player> Players { get; set; }
