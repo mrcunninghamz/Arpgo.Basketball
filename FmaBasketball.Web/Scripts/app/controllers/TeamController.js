@@ -35,12 +35,14 @@ var Fma;
                         switch (newValue.Id) {
                             case 1:
                                 _this.DropDownService.get({ type: "AReasons" }, function (response) {
+                                    _this.Scope.Model.SelectedReason = { Id: "", Label: "Select A Reason" };
                                     response.Data.unshift(_this.Scope.Model.SelectedReason);
                                     _this.Scope.Reasons = response.Data;
                                 });
                                 break;
                             case 2:
                                 _this.DropDownService.get({ type: "BReasons" }, function (response) {
+                                    _this.Scope.Model.SelectedReason = { Id: "", Label: "Select A Reason" };
                                     response.Data.unshift(_this.Scope.Model.SelectedReason);
                                     _this.Scope.Reasons = response.Data;
                                 });

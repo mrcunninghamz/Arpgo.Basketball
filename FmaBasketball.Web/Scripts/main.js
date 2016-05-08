@@ -14,4 +14,4 @@ var Fma;
     }());
     var main = new Main();
 })(Fma || (Fma = {}));
-//# sourceMappingURL=Main.js.map
+//# sourceMappingURL=main.js.map

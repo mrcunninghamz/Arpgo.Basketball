@@ -50,17 +50,20 @@ module Fma.Controllers {
                         switch (newValue.Id) {
                             case 1:
                                 this.DropDownService.get({ type: "AReasons" }, (response) => {
+                                    this.Scope.Model.SelectedReason = { Id: "", Label: "Select A Reason" }
                                     response.Data.unshift(this.Scope.Model.SelectedReason);
                                     this.Scope.Reasons = response.Data;
                                 });
                                 break;
                             case 2:
                                 this.DropDownService.get({ type: "BReasons" }, (response) => {
+                                    this.Scope.Model.SelectedReason = { Id: "", Label: "Select A Reason" }
                                     response.Data.unshift(this.Scope.Model.SelectedReason);
                                     this.Scope.Reasons = response.Data;
                                 });
                                 break;
                             default:
+
                         }
                     }
 
