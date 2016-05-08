@@ -1,0 +1,58 @@
+﻿@using Fma.Core.Extensions
+@model FmaBasketball.Web.Models.RegisterTeamViewModel
+@{
+}
+<div ng-controller="RegisterTeamController">
+    <h2>Register</h2>
+    <form name="form" novalidate>
+        <div class="form-group" show-errors>
+            <label for="Name" class="form-control-label">@Html.DisplayNameFor(x => x.Name)</label>
+            <input type="text" name="Name" class = "form-control" ng-model = "Model.Name" ng-required = "true"/>
+            <div ng-show="form.$submitted || form.Name.$touched">
+                <span ng-show="form.Name.$error.required" class="help-block">Please enter your team's name</span>
+            </div>
+            
+        </div>
+        <div class="form-group" show-errors>
+            <label for="CaptianName" class="form-control-label">@Html.DisplayNameFor(x => x.CaptianName)</label>
+            <input type="text" name="CaptianName" class="form-control" ng-model="Model.CaptianName" ng-required="true" />
+            <div ng-show="form.$submitted || form.CaptianName.$touched">
+                <span ng-show="form.CaptianName.$error.required" class="help-block">Please enter your team captain's name</span>
+            </div>
+        </div>
+        <div class="form-group" show-errors>
+            <label for="Email" class="form-control-label">@Html.DisplayNameFor(x => x.Email)</label>
+            <input type="text" name="Email" class="form-control" ng-model="Model.Email" ng-required="true"/>
+            <div ng-show="form.$submitted || form.Email.$touched">
+                <span ng-show="form.Email.$error.required" class="help-block">Please enter your email address</span>
+            </div>
+        </div>
+        <div class="form-group" show-errors>
+            <label for="SelectedDivision" class="form-control-label">@Html.DisplayNameFor(x => x.Division)</label>
+            <input type="text" name="Division" class="form-control" ng-model="Model.Division" ng-required="true" ng-show="false" />
+            <select name="SelectedDivision" class="form-control"
+                    ng-init="Model.SelectedDivision"
+                    ng-options="option.Label for option in Divisions track by option.Id"
+                    ng-model="Model.SelectedDivision"
+                    ng-required="true">
+            </select>
+            <div ng-show="form.$submitted || form.Division.$touched">
+                <span ng-show="form.Division.$error.required" class="help-block">Please select a division</span>
+            </div>
+        </div>
+        <div class="form-group" show-errors ng-show="form.Division.$modelValue > 0">
+            <label for="SelectedReason" class="form-control-label">@Html.DisplayNameFor(x => x.Reason)</label>
+            <input type="text" name="Reason" class="form-control" ng-model="Model.Reason" ng-required="true" ng-show="false" />
+            <select name="SelectedReason" class="form-control"
+                    ng-init="Model.SelectedReason"
+                    ng-options="option.Label for option in Reasons track by option.Id"
+                    ng-model="Model.SelectedReason"
+                    ng-required="true"></select>
+            <div ng-show="form.$submitted || form.Reason.$touched">
+                <span ng-show="form.Reason.$error.required" class="help-block">Please select a reason</span>
+            </div>
+        </div>
+        <input type="button" ng-click="Reset(form)" value="Reset" />
+        <input type="submit" ng-click="Update(Model)" value="Save" />
+    </form>   
+</div>

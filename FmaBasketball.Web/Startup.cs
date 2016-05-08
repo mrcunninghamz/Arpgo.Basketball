@@ -1,7 +1,10 @@
-﻿using System.Web;
+﻿using System.Reflection;
+using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
 using Fma.Core.Entity;
 using FmaBasketball.Data;
 using Microsoft.AspNet.Identity;
@@ -18,6 +21,7 @@ namespace FmaBasketball.Web
         public void Configuration(IAppBuilder app)
         {
             var builder = new ContainerBuilder();
+            var config = GlobalConfiguration.Configuration;
 
             // REGISTER DEPENDENCIES
             builder.RegisterType<FmaBasketballDbContext>().AsSelf().InstancePerRequest();
@@ -29,16 +33,21 @@ namespace FmaBasketball.Web
 
             // REGISTER CONTROLLERS SO DEPENDENCIES ARE CONSTRUCTOR INJECTED
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
+            builder.RegisterApiControllers(typeof(MvcApplication).Assembly);
 
             // BUILD THE CONTAINER
             var container = builder.Build();
 
             // REPLACE THE MVC DEPENDENCY RESOLVER WITH AUTOFAC
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
 
             // REGISTER WITH OWIN
             app.UseAutofacMiddleware(container);
+            app.UseAutofacWebApi(config);
             app.UseAutofacMvc();
+
 
             ConfigureAuth(app);
         }

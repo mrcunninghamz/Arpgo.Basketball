@@ -1,16 +1,10 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
-<div class="jumbotron">
-    <h1>FMA Basketball</h1>
-    <p class="lead">basketball yes!!</p>
-</div>
-
-<div class="row" ng-controller="homeController as ctrl">
+<div class="row" ng-controller="HomeController as ctrl">
     <div class="col-md-4">
         <h2>Getting started</h2>
-        <p>Name : {{name}}</p>
-        <p>LastName : {{lastName}}</p>
+        <p>Name : {{Model.name}}</p>
+        <p>LastName : {{Model.lastName}}</p>
     </div>
 </div>

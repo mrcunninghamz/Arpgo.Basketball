@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
-    @*@Scripts.Render("~/bundles/modernizr")*@
-    <script data-main="/Scripts/main" src="~/Scripts/require.js"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -36,9 +34,14 @@
             <p>&copy; @DateTime.Now.Year - Karl Merecido</p>
         </footer>
     </div>
+    @Scripts.Render("~/app")
+    <script language="javascript">
+        (function (Fma) {
+            // your page initialization code here
+            // the DOM will be available here
 
-    @*@Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)*@
+        })(Fma || {});
+    </script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>

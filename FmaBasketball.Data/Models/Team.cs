@@ -11,6 +11,11 @@ namespace FmaBasketball.Data.Models
         public string OtherReason { get; set; }
         public string HomePhoneNumber { get; set; }
         public string AlternatePhoneNumber { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zip { get; set; }
 
         public virtual Division Division { get; set; }
         public virtual Reason Reason { get; set; }

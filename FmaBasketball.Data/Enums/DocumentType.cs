@@ -2,7 +2,7 @@
 {
     public enum DocumentType
     {
-        PhotoId,
+        PhotoId = 1,
         BirthCertificate,
         MarriageCertificate,
         AdoptionPapers

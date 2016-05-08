@@ -76,7 +76,6 @@
       <DependentUpon>201604302021140_baseDataBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Division.cs" />
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\DocumentType.cs" />

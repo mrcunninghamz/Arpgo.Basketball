@@ -2,7 +2,7 @@
 {
     public enum DivisionType
     {
-        A,
+        A = 1,
         B
     }
 }
