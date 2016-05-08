@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace Fma.Core.Enums
 {
-    public enum State
+    public enum StatesAndCountriesType
     {
+        [Description("Canada")]
+        CAN,
+
         [Description("Alabama")]
         AL,
 
@@ -160,10 +158,7 @@ namespace Fma.Core.Enums
         WV,
 
         [Description("Wyoming")]
-        WY,
-
-        [Description("Canada")]
-        CAN
+        WY
 
     }
 }

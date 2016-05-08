@@ -379,6 +379,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\app\BasketballApp.ts" />
+    <TypeScriptCompile Include="Scripts\app\services\DropDownFactory.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\HomeController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\TeamController.ts" />
     <TypeScriptCompile Include="Scripts\app\models\Team.ts" />

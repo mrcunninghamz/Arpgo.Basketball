@@ -11,7 +11,7 @@ var Fma;
             });
         }
         return Main;
-    }());
+    })();
     var main = new Main();
 })(Fma || (Fma = {}));
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=Main.js.map

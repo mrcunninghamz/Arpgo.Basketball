@@ -16,10 +16,12 @@
         Zip: string;
         SelectedDivision: {};
         SelectedReason: {};
+        SelectedState: {};
 
         constructor() {
             this.SelectedDivision = { Id: "", Label: "Select A Division" };
             this.SelectedReason = { Id: "", Label: "Select A Reason" };
+            this.SelectedState = { Id: "", Label: "Select A State/Country" };
         }
     }
 
@@ -39,6 +41,7 @@
         Zip: string;
 
         SelectedDivision: {};
-        SelectedReason: {}
+        SelectedReason: {};
+        SelectedState: {};
     }
 }

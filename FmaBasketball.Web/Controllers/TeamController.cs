@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Mvc;
+using Fma.Core.Enums;
 using Fma.Core.Extensions;
 using FmaBasketball.Data;
 using FmaBasketball.Data.Enums;
@@ -35,6 +36,9 @@ namespace FmaBasketball.Web.Controllers
                     break;
                 case "BReasons":
                     selectList = SelectExtensions.ToSelectList(typeof(BReasonsType), null);
+                    break;
+                case "States":
+                    selectList = SelectExtensions.ToSelectList(typeof(StatesAndCountriesType), null);
                     break;
                 default:
                     selectList = new SelectList(null);

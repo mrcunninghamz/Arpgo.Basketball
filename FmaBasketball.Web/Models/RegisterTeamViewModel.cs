@@ -24,7 +24,7 @@ namespace FmaBasketball.Web.Models
         [Display(Name = "Reason")]
         public ReasonType Reason { get; set; }
 
-        [Display(Name = "Other")]
+        [Display(Name = "Reason for other")]
         public string OtherReason { get; set; }
 
         [Required]
@@ -42,6 +42,7 @@ namespace FmaBasketball.Web.Models
         public string City { get; set; }
 
         [Required]
+        [Display(Name = "State/Country")]
         public string State { get; set; }
 
         [Required]

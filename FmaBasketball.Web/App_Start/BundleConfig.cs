@@ -19,6 +19,7 @@ namespace FmaBasketball.Web
                       "~/Scripts/angular-ui/ui-bootstrap-tpls.js",
                       "~/Scripts/angular-ui/showErrors.js",
                       "~/Scripts/app/controllers/*.js",
+                      "~/Scripts/app/services/*.js",
                       "~/Scripts/app/models/*.js",
                       "~/Scripts/app/BasketballApp.js",
                       "~/Scripts/Main.js"));

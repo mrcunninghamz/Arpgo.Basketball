@@ -29,8 +29,8 @@
         </div>
         <div class="form-group" show-errors>
             <label for="SelectedDivision" class="form-control-label">@Html.DisplayNameFor(x => x.Division)</label>
-            <input type="text" name="Division" class="form-control" ng-model="Model.Division" ng-required="true" ng-show="false" />
-            <select name="SelectedDivision" class="form-control"
+            @*<input type="text" name="Division" class="form-control" ng-model="Model.Division" ng-required="true" ng-show="true" />*@
+            <select name="Division" class="form-control"
                     ng-init="Model.SelectedDivision"
                     ng-options="option.Label for option in Divisions track by option.Id"
                     ng-model="Model.SelectedDivision"
@@ -40,16 +40,59 @@
                 <span ng-show="form.Division.$error.required" class="help-block">Please select a division</span>
             </div>
         </div>
-        <div class="form-group" show-errors ng-show="form.Division.$modelValue > 0">
+        <div class="form-group" show-errors ng-show="form.Division.$modelValue.Id > 0">
             <label for="SelectedReason" class="form-control-label">@Html.DisplayNameFor(x => x.Reason)</label>
-            <input type="text" name="Reason" class="form-control" ng-model="Model.Reason" ng-required="true" ng-show="false" />
-            <select name="SelectedReason" class="form-control"
+            <select name="Reason" class="form-control"
                     ng-init="Model.SelectedReason"
                     ng-options="option.Label for option in Reasons track by option.Id"
                     ng-model="Model.SelectedReason"
                     ng-required="true"></select>
             <div ng-show="form.$submitted || form.Reason.$touched">
                 <span ng-show="form.Reason.$error.required" class="help-block">Please select a reason</span>
+            </div>
+        </div>
+        <div class="form-group" show-errors ng-show="form.Reason.$modelValue.Id == 5">
+            <label for="OtherReason" class="form-control-label">@Html.DisplayNameFor(x => x.OtherReason)</label>
+            <input type="text" name="OtherReason" class="form-control" ng-model="Model.OtherReason" ng-required="form.Reason.$modelValue.Id == 5"/>
+            <div ng-show="form.$submitted || form.OtherReason.$touched">
+                <span ng-show="form.OtherReason.$error.required" class="help-block">Please enter a reason</span>
+            </div>
+        </div>
+        <div class="form-group" show-errors>
+            <label for="Address1" class="form-control-label">@Html.DisplayNameFor(x => x.Address1)</label>
+            <input type="text" name="Address1" class="form-control" ng-model="Model.Address1" ng-required="true" />
+            <div ng-show="form.$submitted || form.Address1.$touched">
+                <span ng-show="form.Address1.$error.required" class="help-block">Please enter a street address</span>
+            </div>
+        </div>
+        <div class="form-group" show-errors>
+            <label for="Address2" class="form-control-label">@Html.DisplayNameFor(x => x.Address2)</label>
+            <input type="text" name="Address2" class="form-control" ng-model="Model.Address2"/>
+        </div>
+        <div class="form-group" show-errors>
+            <label for="City" class="form-control-label">@Html.DisplayNameFor(x => x.City)</label>
+            <input type="text" name="City" class="form-control" ng-model="Model.City" ng-required="true"/>
+            <div ng-show="form.$submitted || form.City.$touched">
+                <span ng-show="form.City.$error.required" class="help-block">Please enter a city</span>
+            </div>
+        </div>
+
+        <div class="form-group" show-errors>
+            <label for="SelectedState" class="form-control-label">@Html.DisplayNameFor(x => x.State)</label>
+            <select name="State" class="form-control"
+                    ng-init="Model.SelectedState"
+                    ng-options="option.Label for option in States track by option.Id"
+                    ng-model="Model.SelectedState"
+                    ng-required="true"></select>
+            <div ng-show="form.$submitted || form.State.$touched">
+                <span ng-show="form.State.$error.required" class="help-block">Please select a state</span>
+            </div>
+        </div>
+        <div class="form-group" show-errors>
+            <label for="Zip" class="form-control-label">@Html.DisplayNameFor(x => x.Zip)</label>
+            <input type="text" name="Zip" class="form-control" ng-model="Model.Zip" ng-required="true" />
+            <div ng-show="form.$submitted || form.Zip.$touched">
+                <span ng-show="form.Zip.$error.required" class="help-block">Please enter a Zip</span>
             </div>
         </div>
         <input type="button" ng-click="Reset(form)" value="Reset" />
