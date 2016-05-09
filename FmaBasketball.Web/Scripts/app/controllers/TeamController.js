@@ -18,15 +18,15 @@ var Fma;
                     });
                 };
                 this.InitiateWatches = function () {
-                    _this.Scope.$watch("Model.Division", function (newValue, oldValue) {
+                    _this.Scope.$watch("Model.Division.Id", function (newValue, oldValue) {
                         if (newValue != oldValue) {
-                            switch (newValue.Id) {
-                                case 1:
+                            switch (newValue) {
+                                case "1":
                                     _this.DropDownService.get({ type: "AReasons" }, function (response) {
                                         _this.Scope.Reasons = response.Data;
                                     });
                                     break;
-                                case 2:
+                                case "2":
                                     _this.DropDownService.get({ type: "BReasons" }, function (response) {
                                         _this.Scope.Reasons = response.Data;
                                         _this.Scope.Model.Reason = null;

@@ -1,5 +1,6 @@
 using System.Linq.Expressions;
 using FmaBasketball.Data.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace FmaBasketball.Data.Migrations
 {
@@ -33,6 +34,11 @@ namespace FmaBasketball.Data.Migrations
                     x => x.Id,
                     new Division { Id = 1, Name = "A" },
                     new Division { Id = 2, Name = "B" }
+                );
+            context.Roles.AddOrUpdate(
+                    x => x.Id,
+                    new IdentityRole { Id = "cd9d9a9f-9acb-4761-b52e-e4784f3a978b", Name = "Admin" },
+                    new IdentityRole { Id = "b04c0862-f48e-4d30-ac29-727b911c9a63", Name = "Team Sponsor" }
                 );
         }
     }

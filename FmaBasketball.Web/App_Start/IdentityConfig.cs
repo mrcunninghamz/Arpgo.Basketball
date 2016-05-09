@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -22,8 +24,14 @@ namespace FmaBasketball.Web
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            SmtpClient client = new SmtpClient();
+            var emailMessage = new MailMessage(ConfigurationManager.AppSettings["SupportEmailAddr"],
+                                        message.Destination,
+                                        message.Subject,
+                                        message.Body);
+            emailMessage.IsBodyHtml = true;
+
+            return client.SendMailAsync(emailMessage);
         }
     }
 

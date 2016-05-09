@@ -217,6 +217,18 @@ namespace FmaBasketball.Web.Controllers
             return code == null ? View("Error") : View();
         }
 
+        [AllowAnonymous]
+        public async Task<ActionResult> ConfirmEmailAndSetPassword(string userId, string code)
+        {
+            if (userId == null || code == null)
+            {
+                return View("Error");
+            }
+
+            var result = await UserManager.ConfirmEmailAsync(userId, code);
+            return View(result.Succeeded ? "ConfirmEmailAndSetPassword" : "Error");
+        }
+
         //
         // POST: /Account/ResetPassword
         [HttpPost]

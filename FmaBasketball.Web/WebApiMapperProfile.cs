@@ -13,6 +13,8 @@ namespace FmaBasketball.Web
                     .ForMember(dest => dest.Reason_Id, opt => opt.MapFrom(src => src.Reason.Id))
                     .ForMember(dest => dest.State, opt => opt.MapFrom(src => src.State.Id))
                     .ForMember(dest => dest.Id, opt => opt.Ignore())
+                    .ForMember(dest => dest.AspNetUser_Id, opt => opt.Ignore())
+                    .ForMember(dest => dest.User, opt => opt.Ignore())
                     .ForMember(dest => dest.Division, opt => opt.Ignore())
                     .ForMember(dest => dest.Reason, opt => opt.Ignore())
                     .ForMember(dest => dest.Players, opt => opt.Ignore())

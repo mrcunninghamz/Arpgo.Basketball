@@ -59,16 +59,16 @@ module Fma.Controllers {
 
         InitiateWatches = () => {
             this.Scope.$watch(
-                "Model.Division",
+                "Model.Division.Id",
                 (newValue, oldValue) => {
                     if (newValue != oldValue) {
-                        switch (newValue.Id) {
-                            case 1:
+                        switch (newValue) {
+                            case "1":
                                 this.DropDownService.get({ type: "AReasons" }, (response) => {
                                    this.Scope.Reasons = response.Data;
                                 });
                                 break;
-                            case 2:
+                            case "2":
                                 this.DropDownService.get({ type: "BReasons" }, (response) => {
                                     this.Scope.Reasons = response.Data;
                                     this.Scope.Model.Reason = null;

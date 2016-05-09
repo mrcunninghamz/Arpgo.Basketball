@@ -21,12 +21,16 @@ namespace FmaBasketball.Data.Models
         ///foreign key maps otherwise use fluentAPI
         public int Division_Id { get; set; }
         public int Reason_Id { get; set; }
+        public string AspNetUser_Id { get; set; }
 
         [ForeignKey("Division_Id")]
         public virtual Division Division { get; set; }
 
         [ForeignKey("Reason_Id")]
         public virtual Reason Reason { get; set; }
+
+        [ForeignKey("AspNetUser_Id")]
+        public virtual ApplicationUser User { get; set; }
 
         public virtual ICollection<Player> Players { get; set; }
     }

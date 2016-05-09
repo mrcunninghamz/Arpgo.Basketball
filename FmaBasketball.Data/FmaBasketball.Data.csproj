@@ -76,6 +76,10 @@
       <DependentUpon>201604302021140_baseDataBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201605081503429_PlayerAndTeamUpdate.cs" />
+    <Compile Include="Migrations\201605090356173_TeamApplicationUserRelationship.cs" />
+    <Compile Include="Migrations\201605090356173_TeamApplicationUserRelationship.Designer.cs">
+      <DependentUpon>201605090356173_TeamApplicationUserRelationship.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Division.cs" />
     <Compile Include="Models\Document.cs" />
@@ -101,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604302021140_baseDataBase.resx">
       <DependentUpon>201604302021140_baseDataBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605090356173_TeamApplicationUserRelationship.resx">
+      <DependentUpon>201605090356173_TeamApplicationUserRelationship.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
