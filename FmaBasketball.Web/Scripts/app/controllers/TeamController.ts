@@ -3,6 +3,13 @@
 
 module Fma.Controllers {
     import ngr = angular.resource;
+
+    export interface IRegisterTeamScope extends ng.IScope {
+        Model: any;
+        update(team: Models.ITeam): void;
+
+    }
+
     export class RegisterTeamController {
         static $inject = ["$scope", "$window", "DropDownService", "TeamService"];
         
@@ -11,18 +18,18 @@ module Fma.Controllers {
         DropDownService: ngr.IResourceClass<ngr.IResource<any>>;
         TeamService: ngr.IResourceClass<ngr.IResource<any>>;
 
-        constructor($scope: ng.IScope, $window: ng.IWindowService, divisionService: any, teamService: any) {
+        constructor($scope: ng.IFormController, $window: ng.IWindowService, divisionService: any, teamService: any) {
             this.Scope = $scope;
             this.Window = $window;
             this.DropDownService = divisionService;
             this.TeamService = teamService;
 
-            this.Scope.Model = new Models.Team();
+            this.Scope.Model = new Models.CreateTeam();
 
             this.InitiateDropDowns();
             this.InitiateWatches();
 
-            this.Scope.Update = (team: Models.ITeam) => {
+            this.Scope.update = (team: Models.ITeam) => {
                 this.Scope.$broadcast("show-errors-check-validity");
 
                 if (this.Scope.form.$valid) {

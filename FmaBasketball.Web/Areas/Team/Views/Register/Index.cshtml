@@ -6,48 +6,58 @@
     <h2>Register</h2>
     <form name="form" novalidate>
         <div class="row">
-            <div class="col-md-6">
-                <div class="form-group" show-errors>
-                    <label for="Name" class="control-label">@Html.DisplayNameFor(x => x.Name)</label>
-                    <input type="text" name="Name" class="form-control" ng-model="Model.Name" ng-required="true" />
-                    <span ng-show="(form.$submitted || form.Name.$touched) && form.Name.$error.required" class="help-block">Please enter your team's name</span>
-                </div>
-                <div class="form-group" show-errors>
-                    <label for="CaptainName" class="control-label">@Html.DisplayNameFor(x => x.CaptainName)</label>
-                    <input type="text" name="CaptainName" class="form-control" ng-model="Model.CaptainName" ng-required="true" />
-                    <span ng-show="(form.$submitted || form.CaptainName.$touched) && form.CaptainName.$error.required" class="help-block">Please enter your team captain's name</span>
-
-                </div>
-                <div class="form-group" show-errors>
-                    <label for="Email" class="control-label">@Html.DisplayNameFor(x => x.Email)</label>
-                    <input type="email" name="Email" class="form-control" ng-model="Model.Email" ng-required="true" />
-                    <span ng-show="(form.$submitted || form.Email.$touched) && form.Email.$error.required" class="help-block">Please enter your email address</span>
-                    <span ng-show="(form.$submitted || form.Email.$touched) && form.Email.$error.email" class="help-block">Please enter a valid email address</span>
-                </div>
+            <div class="form-group col-sm-6" show-errors>
+                <label for="Name" class="control-label">@Html.DisplayNameFor(x => x.Name)</label>
+                <input type="text" name="Name" class="form-control" ng-model="Model.Name" ng-required="true" />
+                <span ng-show="(form.$submitted || form.Name.$touched) && form.Name.$error.required" class="help-block">Please enter your team's name</span>
             </div>
-            <div class="col-md-6">
-                <div class="form-group" show-errors>
-                    <label for="Division" class="control-label">@Html.DisplayNameFor(x => x.Division)</label>
-                    <select name="Division" class="form-control"
-                            ng-options="option.Label for option in Divisions track by option.Id"
-                            ng-model="Model.Division"
-                            ng-required="true"></select>
-                    <span ng-show="(form.$submitted || form.Division.$touched) && form.Division.$error.required" class="help-block">Please select a division</span>
+            <div class="form-group col-sm-6" show-errors>
+                <label for="CaptainName" class="control-label">@Html.DisplayNameFor(x => x.CaptainName)</label>
+                <input type="text" name="CaptainName" class="form-control" ng-model="Model.CaptainName" ng-required="true" />
+                <span ng-show="(form.$submitted || form.CaptainName.$touched) && form.CaptainName.$error.required" class="help-block">Please enter your team captain's name</span>
 
-                </div>
-                <div class="form-group" show-errors ng-show="form.Division.$modelValue.Id > 0">
-                    <label for="SelectedReason" class="control-label">@Html.DisplayNameFor(x => x.Reason)</label>
-                    <select name="Reason" class="form-control"
-                            ng-options="option.Label for option in Reasons track by option.Id"
-                            ng-model="Model.Reason"
-                            ng-required="true"></select>
-                    <span ng-show="(form.$submitted || form.Reason.$touched) && form.Reason.$error.required" class="help-block">Please select a reason</span>
-                </div>
-                <div class="form-group" show-errors ng-show="form.Reason.$modelValue.Id == 5">
-                    <label for="OtherReason" class="control-label">@Html.DisplayNameFor(x => x.OtherReason)</label>
-                    <input type="text" name="OtherReason" class="form-control" ng-model="Model.OtherReason" ng-required="form.Reason.$modelValue.Id == 5" />
-                    <span ng-show="(form.$submitted || form.OtherReason.$touched) && form.OtherReason.$error.required" class="help-block">Please enter a reason</span>
-                </div>
+            </div>
+            <div class="form-group col-sm-6" show-errors>
+                <label for="Email" class="control-label">@Html.DisplayNameFor(x => x.Email)</label>
+                <input type="email" name="Email" class="form-control" ng-model="Model.Email" ng-required="true" />
+                <span ng-show="(form.$submitted || form.Email.$touched) && form.Email.$error.required" class="help-block">Please enter your email address</span>
+                <span ng-show="(form.$submitted || form.Email.$touched) && form.Email.$error.email" class="help-block">Please enter a valid email address</span>
+            </div>
+            <div class="form-group col-sm-3" show-errors>
+                <label for="Password" class="control-label">@Html.DisplayNameFor(x => x.Password)</label>
+                <input type="password" name="Password" class="form-control" ng-model="Model.Password" ng-required="true" minlength="6" maxlength="100" />
+                <span ng-show="(form.$submitted || form.Password.$touched) && form.Password.$error.required" class="help-block">Please enter a password</span>
+                <span ng-show="(form.$submitted || form.Password.$touched) && form.Password.$error.minlength || form.Password.$error.maxlength " class="help-block">Must be between 6 to 100 characters long</span>
+                @*<span ng-show="(form.$submitted || form.Email.$touched) && form.Email.$error.email" class="help-block">Please enter a valid email address</span>*@
+            </div>
+            <div class="form-group col-sm-3" show-errors>
+                <label for="ConfirmPassword" class="control-label">@Html.DisplayNameFor(x => x.ConfirmPassword)</label>
+                <input type="text" name="ConfirmPassword" class="form-control" ng-model="Model.ConfirmPassword" ng-required="true" compare-to="form.Password"/>
+                <span ng-show="(form.$submitted || form.ConfirmPassword.$touched) && form.ConfirmPassword.$error.compareTo" class="help-block">Passwords do not match</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-3" show-errors>
+                <label for="Division" class="control-label">@Html.DisplayNameFor(x => x.Division)</label>
+                <select name="Division" class="form-control"
+                        ng-options="option.Label for option in Divisions track by option.Id"
+                        ng-model="Model.Division"
+                        ng-required="true"></select>
+                <span ng-show="(form.$submitted || form.Division.$touched) && form.Division.$error.required" class="help-block">Please select a division</span>
+
+            </div>
+            <div class="form-group col-sm-3" show-errors ng-show="form.Division.$modelValue.Id > 0">
+                <label for="SelectedReason" class="control-label">@Html.DisplayNameFor(x => x.Reason)</label>
+                <select name="Reason" class="form-control"
+                        ng-options="option.Label for option in Reasons track by option.Id"
+                        ng-model="Model.Reason"
+                        ng-required="true"></select>
+                <span ng-show="(form.$submitted || form.Reason.$touched) && form.Reason.$error.required" class="help-block">Please select a reason</span>
+            </div>
+            <div class="form-group col-sm-6" show-errors ng-show="form.Reason.$modelValue.Id == 5">
+                <label for="OtherReason" class="control-label">@Html.DisplayNameFor(x => x.OtherReason)</label>
+                <input type="text" name="OtherReason" class="form-control" ng-model="Model.OtherReason" ng-required="form.Reason.$modelValue.Id == 5" />
+                <span ng-show="(form.$submitted || form.OtherReason.$touched) && form.OtherReason.$error.required" class="help-block">Please enter a reason</span>
             </div>
         </div>
         <div class="row">

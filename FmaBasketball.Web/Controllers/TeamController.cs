@@ -39,7 +39,7 @@ namespace FmaBasketball.Web.Controllers
                     await _userManager.AddToRoleAsync(user.Id, "Team Sponsor"); //TODO: put this role name in a constants file
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Link("Default", new { Controller = "Account", Action = "ConfirmEmailAndSetPassword", userId = user.Id, code });
+                    var callbackUrl = Url.Link("Default", new { Controller = "Account", Action = "ConfirmEmail", userId = user.Id, code });
                     await _userManager.SendEmailAsync(user.Id, "Team registration and next steps!", $"Hi! Finish registering your team, {viewModel.Name}, by clicking <a href=\"{callbackUrl}\">here</a>.");
                     
 

@@ -362,7 +362,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Account\ConfirmEmailAndSetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -388,6 +387,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\app\BasketballApp.ts" />
+    <TypeScriptCompile Include="Scripts\app\directives\CompareTo.ts" />
     <TypeScriptCompile Include="Scripts\app\services\DropDownFactory.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\HomeController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\TeamController.ts" />

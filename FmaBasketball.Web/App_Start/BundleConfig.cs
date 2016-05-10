@@ -20,9 +20,15 @@ namespace FmaBasketball.Web
                       "~/Scripts/angular-ui/showErrors.js",
                       "~/Scripts/app/controllers/*.js",
                       "~/Scripts/app/services/*.js",
+                      "~/Scripts/app/directives/*.js",
                       "~/Scripts/app/models/*.js",
                       "~/Scripts/app/BasketballApp.js",
                       "~/Scripts/Main.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                    "~/Scripts/jquery-{version}.js",
+                      "~/Scripts/jquery.validate*",
+                      "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

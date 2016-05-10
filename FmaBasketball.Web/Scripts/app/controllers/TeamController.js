@@ -57,10 +57,10 @@ var Fma;
                 this.Window = $window;
                 this.DropDownService = divisionService;
                 this.TeamService = teamService;
-                this.Scope.Model = new Fma.Models.Team();
+                this.Scope.Model = new Fma.Models.CreateTeam();
                 this.InitiateDropDowns();
                 this.InitiateWatches();
-                this.Scope.Update = function (team) {
+                this.Scope.update = function (team) {
                     _this.Scope.$broadcast("show-errors-check-validity");
                     if (_this.Scope.form.$valid) {
                         _this.TeamService.save(_this.Scope.Model, function () {
