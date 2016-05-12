@@ -3,35 +3,47 @@
 
 module Fma.Controllers {
     import ngr = angular.resource;
+    
+    export class ManageTeamController implements IManageTeam {
+        static $inject = ["$scope", "$window", "DropDownService", "TeamService"];
 
-    export interface IRegisterTeamScope extends ng.IScope {
-        Model: any;
-        update(team: Models.ITeam): void;
+        Scope: any;
         PasswordRegex: string;
+        Window: ng.IWindowService;
+        TeamService: ngr.IResourceClass<ngr.IResource<any>>;
+
+        constructor($scope: IRegisterTeamScope, $window: ng.IWindowService, divisionService: any, teamService: any) {
+            this.Scope = $scope;
+            this.Window = $window;
+
+            const utilities = new Utilities(this.Scope, divisionService);
+            utilities.InitiateDropDowns();
+            utilities.InitiateWatches();
+        }
+
     }
 
-    export class RegisterTeamController {
+    export class RegisterTeamController implements IManageTeam {
         static $inject = ["$scope", "$window", "DropDownService", "TeamService"];
         
         Scope: any;
         PasswordRegex: string;
         Window: ng.IWindowService;
-        DropDownService: ngr.IResourceClass<ngr.IResource<any>>;
         TeamService: ngr.IResourceClass<ngr.IResource<any>>;
 
-        constructor($scope: ng.IFormController, $window: ng.IWindowService, divisionService: any, teamService: any) {
+        constructor($scope: IRegisterTeamScope, $window: ng.IWindowService, divisionService: any, teamService: any) {
             this.Scope = $scope;
             this.Window = $window;
-            this.DropDownService = divisionService;
             this.TeamService = teamService;
-            this.Scope.PasswordRegex = "^(?=.*\\d)(?=.*[A-Z])(.){6,100}$";
+            this.Scope.PasswordRegex = Constants.passwordRegex;
 
             this.Scope.Model = new Models.CreateTeam();
 
-            this.InitiateDropDowns();
-            this.InitiateWatches();
+            const utilities = new Utilities(this.Scope, divisionService);
+            utilities.InitiateDropDowns();
+            utilities.InitiateWatches();
 
-            this.Scope.update = (team: Models.ITeam) => {
+            this.Scope.post = (team: Models.ITeam) => {
                 this.Scope.$broadcast("show-errors-check-validity");
 
                 if (this.Scope.form.$valid) {
@@ -51,8 +63,38 @@ module Fma.Controllers {
             //    }
             //}
         }
+    }
 
-        InitiateDropDowns = () =>{
+    export interface IRegisterTeamScope extends ITeamScope {
+        PasswordRegex: string;
+    }
+
+    export interface ITeamScope extends ng.IScope {
+
+        Model: any;
+        post(team: Models.ITeam): void;
+    }
+
+    export interface IManageTeam {
+        Scope: any;
+        PasswordRegex: string;
+        Window: ng.IWindowService;
+        TeamService: ngr.IResourceClass<ngr.IResource<any>>;
+    }
+
+    export class Constants {
+        static passwordRegex = "^(?=.*\\d)(?=.*[A-Z])(.){6,100}$";
+    }
+
+    export class Utilities {
+        Scope: any;
+        DropDownService: ngr.IResourceClass<ngr.IResource<any>>;
+        constructor($scope: any, divisionService: any) {
+            this.Scope = $scope;
+            this.DropDownService = divisionService;
+        }
+
+        InitiateDropDowns = () => {
             this.DropDownService.get({ type: "Divisions" }, (response) => {
                 this.Scope.Divisions = response.Data;
             });
@@ -74,7 +116,7 @@ module Fma.Controllers {
                         switch (newValue) {
                             case "1":
                                 this.DropDownService.get({ type: "AReasons" }, (response) => {
-                                   this.Scope.Reasons = response.Data;
+                                    this.Scope.Reasons = response.Data;
                                 });
                                 break;
                             case "2":
@@ -113,9 +155,12 @@ module Fma.Controllers {
         }
     }
 
+
     angular.element(document)
         .ready(() => {
-            angular.module("fmaBasketballApp").controller("RegisterTeamController", RegisterTeamController);
+            angular.module("fmaBasketballApp")
+                .controller("RegisterTeamController", RegisterTeamController)
+                .controller("ManageTeamController", ManageTeamController);
 
         });
 }

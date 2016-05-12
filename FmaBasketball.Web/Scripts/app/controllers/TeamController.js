@@ -3,8 +3,58 @@ var Fma;
 (function (Fma) {
     var Controllers;
     (function (Controllers) {
+        var ManageTeamController = (function () {
+            function ManageTeamController($scope, $window, divisionService, teamService) {
+                this.Scope = $scope;
+                this.Window = $window;
+                var utilities = new Utilities(this.Scope, divisionService);
+                utilities.InitiateDropDowns();
+                utilities.InitiateWatches();
+            }
+            ManageTeamController.$inject = ["$scope", "$window", "DropDownService", "TeamService"];
+            return ManageTeamController;
+        }());
+        Controllers.ManageTeamController = ManageTeamController;
         var RegisterTeamController = (function () {
             function RegisterTeamController($scope, $window, divisionService, teamService) {
+                var _this = this;
+                this.Scope = $scope;
+                this.Window = $window;
+                this.TeamService = teamService;
+                this.Scope.PasswordRegex = Constants.passwordRegex;
+                this.Scope.Model = new Fma.Models.CreateTeam();
+                var utilities = new Utilities(this.Scope, divisionService);
+                utilities.InitiateDropDowns();
+                utilities.InitiateWatches();
+                this.Scope.post = function (team) {
+                    _this.Scope.$broadcast("show-errors-check-validity");
+                    if (_this.Scope.form.$valid) {
+                        _this.TeamService.save(_this.Scope.Model, function () {
+                            _this.Window.location.href = "/Team/Register/Thanks";
+                        });
+                    }
+                };
+                //this.Scope.Reset = form => {
+                //    $scope.$broadcast("show-errors-reset");
+                //    if (form) {
+                //        form.$setPristine();
+                //        form.$setUntouched();
+                //    }
+                //}
+            }
+            RegisterTeamController.$inject = ["$scope", "$window", "DropDownService", "TeamService"];
+            return RegisterTeamController;
+        }());
+        Controllers.RegisterTeamController = RegisterTeamController;
+        var Constants = (function () {
+            function Constants() {
+            }
+            Constants.passwordRegex = "^(?=.*\\d)(?=.*[A-Z])(.){6,100}$";
+            return Constants;
+        }());
+        Controllers.Constants = Constants;
+        var Utilities = (function () {
+            function Utilities($scope, divisionService) {
                 var _this = this;
                 this.InitiateDropDowns = function () {
                     _this.DropDownService.get({ type: "Divisions" }, function (response) {
@@ -54,36 +104,16 @@ var Fma;
                     }
                 };
                 this.Scope = $scope;
-                this.Window = $window;
                 this.DropDownService = divisionService;
-                this.TeamService = teamService;
-                this.Scope.PasswordRegex = "^(?=.*\\d)(?=.*[A-Z])(.){6,100}$";
-                this.Scope.Model = new Fma.Models.CreateTeam();
-                this.InitiateDropDowns();
-                this.InitiateWatches();
-                this.Scope.update = function (team) {
-                    _this.Scope.$broadcast("show-errors-check-validity");
-                    if (_this.Scope.form.$valid) {
-                        _this.TeamService.save(_this.Scope.Model, function () {
-                            _this.Window.location.href = "/Team/Register/Thanks";
-                        });
-                    }
-                };
-                //this.Scope.Reset = form => {
-                //    $scope.$broadcast("show-errors-reset");
-                //    if (form) {
-                //        form.$setPristine();
-                //        form.$setUntouched();
-                //    }
-                //}
             }
-            RegisterTeamController.$inject = ["$scope", "$window", "DropDownService", "TeamService"];
-            return RegisterTeamController;
+            return Utilities;
         }());
-        Controllers.RegisterTeamController = RegisterTeamController;
+        Controllers.Utilities = Utilities;
         angular.element(document)
             .ready(function () {
-            angular.module("fmaBasketballApp").controller("RegisterTeamController", RegisterTeamController);
+            angular.module("fmaBasketballApp")
+                .controller("RegisterTeamController", RegisterTeamController)
+                .controller("ManageTeamController", ManageTeamController);
         });
     })(Controllers = Fma.Controllers || (Fma.Controllers = {}));
 })(Fma || (Fma = {}));

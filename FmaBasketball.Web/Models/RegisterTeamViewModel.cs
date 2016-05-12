@@ -2,13 +2,27 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FmaBasketball.Web.Models
 {
-    public class 
-        RegisterTeamViewModel
+    public class RegisterTeamViewModel : TeamViewModel
+    {
+        [Required]
+        [StringLength(100, MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("Password")]
+        public string ConfirmPassword { get; set; }
+
+    }
+
+    public class TeamViewModel
     {
         [Required]
         [Display(Name = "Team Name")]
         public string Name { get; set; }
-        
+
         [Required]
         [Display(Name = "Team Captain")]
         public string CaptainName { get; set; }
@@ -20,7 +34,7 @@ namespace FmaBasketball.Web.Models
 
         [Display(Name = "Division")]
         public AngularSelectItemViewModel Division { get; set; }
-        
+
         [Display(Name = "Reason")]
         public AngularSelectItemViewModel Reason { get; set; }
 
@@ -39,7 +53,7 @@ namespace FmaBasketball.Web.Models
         public string Address1 { get; set; }
 
         public string Address2 { get; set; }
-        
+
         [Required]
         public string City { get; set; }
 
@@ -49,17 +63,5 @@ namespace FmaBasketball.Web.Models
 
         [Required]
         public string Zip { get; set; }
-
-        [Required]
-        [StringLength(100, MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        public string Password { get; set; }
-
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password")]
-        public string ConfirmPassword { get; set; }
-
     }
 }
