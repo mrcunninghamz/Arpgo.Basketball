@@ -57,6 +57,7 @@ var Fma;
                 this.Window = $window;
                 this.DropDownService = divisionService;
                 this.TeamService = teamService;
+                this.Scope.PasswordRegex = "^(?=.*\\d)(?=.*[A-Z])(.){6,100}$";
                 this.Scope.Model = new Fma.Models.CreateTeam();
                 this.InitiateDropDowns();
                 this.InitiateWatches();

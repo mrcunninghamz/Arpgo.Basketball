@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using FmaBasketball.Data.Enums;
 
 namespace FmaBasketball.Web.Models
 {
@@ -19,7 +18,7 @@ namespace FmaBasketball.Web.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Display(Name = "Preferred Division")]
+        [Display(Name = "Division")]
         public AngularSelectItemViewModel Division { get; set; }
         
         [Display(Name = "Reason")]

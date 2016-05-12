@@ -7,13 +7,14 @@ module Fma.Controllers {
     export interface IRegisterTeamScope extends ng.IScope {
         Model: any;
         update(team: Models.ITeam): void;
-
+        PasswordRegex: string;
     }
 
     export class RegisterTeamController {
         static $inject = ["$scope", "$window", "DropDownService", "TeamService"];
         
         Scope: any;
+        PasswordRegex: string;
         Window: ng.IWindowService;
         DropDownService: ngr.IResourceClass<ngr.IResource<any>>;
         TeamService: ngr.IResourceClass<ngr.IResource<any>>;
@@ -23,6 +24,7 @@ module Fma.Controllers {
             this.Window = $window;
             this.DropDownService = divisionService;
             this.TeamService = teamService;
+            this.Scope.PasswordRegex = "^(?=.*\\d)(?=.*[A-Z])(.){6,100}$";
 
             this.Scope.Model = new Models.CreateTeam();
 
