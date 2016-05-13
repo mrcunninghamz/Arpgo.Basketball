@@ -237,7 +237,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -249,6 +248,7 @@
     <Compile Include="Areas\Team\Controllers\ManageController.cs" />
     <Compile Include="Areas\Team\Controllers\RegisterController.cs" />
     <Compile Include="Areas\Team\TeamAreaRegistration.cs" />
+    <Compile Include="AutoMapperModule.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />

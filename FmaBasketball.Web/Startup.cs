@@ -1,10 +1,12 @@
-﻿using System.Reflection;
+﻿using System.Collections.Generic;
+using System.Reflection;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
+using AutoMapper;
 using Fma.Core.Entity;
 using FmaBasketball.Data;
 using Microsoft.AspNet.Identity;
@@ -34,6 +36,7 @@ namespace FmaBasketball.Web
             // REGISTER CONTROLLERS SO DEPENDENCIES ARE CONSTRUCTOR INJECTED
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             builder.RegisterApiControllers(typeof(MvcApplication).Assembly);
+            builder.RegisterModule(new AutoMapperModule());
 
             // BUILD THE CONTAINER
             var container = builder.Build();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Web.Http;
+using AutoMapper;
 using Fma.Core.Entity;
 using Fma.Core.Extensions;
 using FmaBasketball.Data;
@@ -15,11 +16,13 @@ namespace FmaBasketball.Web.Controllers
     {
         private readonly FmaBasketballDbContext _dbContext;
         private readonly ApplicationUserManager _userManager;
+        private readonly IMapper _mapper;
 
-        public TeamController(FmaBasketballDbContext dbContext, ApplicationUserManager userManager)
+        public TeamController(FmaBasketballDbContext dbContext, ApplicationUserManager userManager, IMapper mapper)
         {
             _dbContext = dbContext;
             _userManager = userManager;
+            _mapper = mapper;
         }
 
         [HttpPost]
@@ -43,7 +46,7 @@ namespace FmaBasketball.Web.Controllers
 
                     await SendTeamSponsorEmailAsync(user.Id, viewModel.Name);
 
-                    var team = viewModel.MapTo(new Team());
+                    var team = _mapper.Map<RegisterTeamViewModel, Team>(viewModel);
                     team.AspNetUser_Id = user.Id;
 
                     _dbContext.Teams.Add(team);
