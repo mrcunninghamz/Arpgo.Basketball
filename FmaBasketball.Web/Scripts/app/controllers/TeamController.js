@@ -7,9 +7,11 @@ var Fma;
             function ManageTeamController($scope, $window, divisionService, teamService) {
                 this.Scope = $scope;
                 this.Window = $window;
+                this.TeamService = teamService;
                 var utilities = new Utilities(this.Scope, divisionService);
                 utilities.InitiateDropDowns();
                 utilities.InitiateWatches();
+                this.Scope.Model = this.TeamService.get();
             }
             ManageTeamController.$inject = ["$scope", "$window", "DropDownService", "TeamService"];
             return ManageTeamController;
@@ -26,7 +28,7 @@ var Fma;
                 var utilities = new Utilities(this.Scope, divisionService);
                 utilities.InitiateDropDowns();
                 utilities.InitiateWatches();
-                this.Scope.post = function (team) {
+                this.Scope.save = function (team) {
                     _this.Scope.$broadcast("show-errors-check-validity");
                     if (_this.Scope.form.$valid) {
                         _this.TeamService.save(_this.Scope.Model, function () {

@@ -11,7 +11,7 @@ namespace FmaBasketball.Web
         protected override void Load(ContainerBuilder builder)
         {
             var profiles =
-                from t in typeof(WebApiMapperProfile).Assembly.GetTypes()
+                from t in typeof(TeamMapperProfile).Assembly.GetTypes()
                 where typeof(Profile).IsAssignableFrom(t)
                 select (Profile)Activator.CreateInstance(t);
 
@@ -21,6 +21,7 @@ namespace FmaBasketball.Web
                 {
                     cfg.AddProfile(profile);
                 }
+                
             })).AsSelf().SingleInstance();
 
             builder.Register(c => c.Resolve<MapperConfiguration>().CreateMapper(c.Resolve)).As<IMapper>().InstancePerLifetimeScope();

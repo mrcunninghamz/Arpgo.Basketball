@@ -1,4 +1,4 @@
-﻿@model FmaBasketball.Web.Models.RegisterTeamViewModel
+﻿@model FmaBasketball.Web.Areas.Team.Models.RegisterTeamViewModel
 @{
 }
 <div ng-controller="RegisterTeamController" class="row">
@@ -106,7 +106,7 @@
             </fieldset>
             <fieldset class="row col-md-12">
                 <div class="col-md-12 text-right">
-                    <input type="submit" class="btn btn-primary" ng-click="post(Model)" value="Register" />
+                    <input type="submit" class="btn btn-primary" ng-click="save(Model)" value="Register" />
                 </div>
             </fieldset>
         </div>

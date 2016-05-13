@@ -15,10 +15,13 @@ module Fma.Controllers {
         constructor($scope: IRegisterTeamScope, $window: ng.IWindowService, divisionService: any, teamService: any) {
             this.Scope = $scope;
             this.Window = $window;
+            this.TeamService = teamService;
 
             const utilities = new Utilities(this.Scope, divisionService);
             utilities.InitiateDropDowns();
             utilities.InitiateWatches();
+
+            this.Scope.Model = this.TeamService.get();
         }
 
     }
@@ -43,7 +46,7 @@ module Fma.Controllers {
             utilities.InitiateDropDowns();
             utilities.InitiateWatches();
 
-            this.Scope.post = (team: Models.ITeam) => {
+            this.Scope.save = (team: Models.ITeam) => {
                 this.Scope.$broadcast("show-errors-check-validity");
 
                 if (this.Scope.form.$valid) {
@@ -67,12 +70,11 @@ module Fma.Controllers {
 
     export interface IRegisterTeamScope extends ITeamScope {
         PasswordRegex: string;
+        save(team: Models.ITeam): void;
     }
 
     export interface ITeamScope extends ng.IScope {
-
         Model: any;
-        post(team: Models.ITeam): void;
     }
 
     export interface IManageTeam {

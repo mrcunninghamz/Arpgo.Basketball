@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using AutoMapper;
 using Fma.Core.Entity;
 using Fma.Core.Extensions;
 using FmaBasketball.Data;
 using FmaBasketball.Data.Models;
+using FmaBasketball.Web.Areas.Team.Models;
 using FmaBasketball.Web.Models;
 using FmaBasketball.Web.Models.Constants;
 using Microsoft.AspNet.Identity;
@@ -23,6 +26,25 @@ namespace FmaBasketball.Web.Controllers
             _dbContext = dbContext;
             _userManager = userManager;
             _mapper = mapper;
+        }
+
+        [HttpGet]
+        [Authorize]
+        public IHttpActionResult Get()
+        {
+            try
+            {
+                var username = HttpContext.Current.User.Identity.GetUserName();
+                var team = _dbContext.Teams.First(x => x.User.UserName.Equals(username));
+
+                var model = _mapper.Map<Team,TeamViewModel>(team);
+
+                return Ok(model);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
 
         [HttpPost]

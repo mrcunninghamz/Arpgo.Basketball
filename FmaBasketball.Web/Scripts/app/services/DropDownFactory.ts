@@ -7,14 +7,6 @@
         }
     }
 
-    export class TeamFactory {
-        static $inject = ["$resource"];
-
-        constructor($resource: angular.resource.IResourceService) {
-            return $resource("/api/Team/:id");
-        }
-    }
-
     angular.element(document)
         .ready(() => {
             var services = angular.module("Services", ["ngResource"]);

@@ -10,19 +10,11 @@ var Fma;
             return DropDownFactory;
         }());
         Services.DropDownFactory = DropDownFactory;
-        var TeamFactory = (function () {
-            function TeamFactory($resource) {
-                return $resource("/api/Team/:id");
-            }
-            TeamFactory.$inject = ["$resource"];
-            return TeamFactory;
-        }());
-        Services.TeamFactory = TeamFactory;
         angular.element(document)
             .ready(function () {
             var services = angular.module("Services", ["ngResource"]);
             services.factory("DropDownService", DropDownFactory);
-            services.factory("TeamService", TeamFactory);
+            services.factory("TeamService", Services.TeamFactory);
         });
     })(Services = Fma.Services || (Fma.Services = {}));
 })(Fma || (Fma = {}));

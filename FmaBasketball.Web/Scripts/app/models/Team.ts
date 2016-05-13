@@ -1,6 +1,7 @@
 ﻿module Fma.Models {
 
-    export class Team implements  ITeam {
+    export class Team implements ITeam {
+        Id: number;
         Name: string;
         CaptainName: string;
         Division: string;

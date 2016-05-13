@@ -117,6 +117,7 @@
     <Compile Include="Entity\IEntity.cs" />
     <Compile Include="Entity\IEntityConfiguration.cs" />
     <Compile Include="Enums\StatesAndCountriesType.cs" />
+    <Compile Include="Extensions\EnumHelper.cs" />
     <Compile Include="Extensions\SelectExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
