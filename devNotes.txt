@@ -1,0 +1,13 @@
+register as a player.
+- enter team code
+- Free agent
+
+team captain: first name, last name
+autoformat of name
+
+add player to team
+- manager adds player - firstname lastname, email, number [0 - 99]  and set format etc 01 or 1
+	- email is sent out for registration
+-verified
+-eligible
+
