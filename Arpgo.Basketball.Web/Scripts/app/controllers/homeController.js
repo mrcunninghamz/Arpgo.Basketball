@@ -21,7 +21,7 @@ var Fma;
         Controllers.HomeModel = HomeModel;
         angular.element(document)
             .ready(function () {
-            angular.module("fmaBasketballApp").controller("HomeController", HomeController);
+            angular.module("BasketballApp").controller("HomeController", HomeController);
         });
     })(Controllers = Fma.Controllers || (Fma.Controllers = {}));
 })(Fma || (Fma = {}));

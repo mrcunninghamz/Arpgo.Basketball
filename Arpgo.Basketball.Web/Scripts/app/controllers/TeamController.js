@@ -113,7 +113,7 @@ var Fma;
         Controllers.Utilities = Utilities;
         angular.element(document)
             .ready(function () {
-            angular.module("fmaBasketballApp")
+            angular.module("BasketballApp")
                 .controller("RegisterTeamController", RegisterTeamController)
                 .controller("ManageTeamController", ManageTeamController);
         });

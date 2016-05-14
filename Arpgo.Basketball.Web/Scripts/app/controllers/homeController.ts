@@ -27,7 +27,7 @@
 
     angular.element(document)
         .ready(() => {
-            angular.module("fmaBasketballApp").controller("HomeController", HomeController);
+            angular.module("BasketballApp").controller("HomeController", HomeController);
 
         });
 }

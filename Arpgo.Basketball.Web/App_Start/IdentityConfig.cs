@@ -109,7 +109,7 @@ namespace Arpgo.Basketball.Web
 
     public class ApplicationUserStore : UserStore<ApplicationUser>
     {
-        public ApplicationUserStore(FmaBasketballDbContext context)
+        public ApplicationUserStore(BasketballDbContext context)
             : base(context)
         {
         }

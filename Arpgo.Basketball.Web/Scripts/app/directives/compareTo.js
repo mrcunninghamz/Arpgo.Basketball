@@ -27,7 +27,7 @@ var Fma;
         Directives.CompareTo = CompareTo;
         angular.element(document)
             .ready(function () {
-            var directives = angular.module("fmaBasketballApp");
+            var directives = angular.module("BasketballApp");
             directives.directive("compareTo", CompareTo.instance);
         });
     })(Directives = Fma.Directives || (Fma.Directives = {}));

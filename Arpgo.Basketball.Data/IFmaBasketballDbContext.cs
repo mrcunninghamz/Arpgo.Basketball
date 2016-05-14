@@ -4,7 +4,7 @@ using Arpgo.Basketball.Data.Models;
 
 namespace Arpgo.Basketball.Data
 {
-    public interface IFmaBasketballDbContext
+    public interface IBasketballDbContext
     {
         IDbSet<Team> Teams { get; set; }
         IDbSet<Player> Players { get; set; }

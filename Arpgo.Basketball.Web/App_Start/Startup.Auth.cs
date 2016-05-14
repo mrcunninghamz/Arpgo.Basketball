@@ -15,7 +15,7 @@ namespace Arpgo.Basketball.Web
         {
             //NOTE: removed for autofac
             // Configure the db context, user manager and signin manager to use a single instance per request
-            //app.CreatePerOwinContext(FmaBasketballDbContext.Create);
+            //app.CreatePerOwinContext(BasketballDbContext.Create);
             //app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             //app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 

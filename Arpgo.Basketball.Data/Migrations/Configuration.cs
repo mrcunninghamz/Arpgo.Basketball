@@ -4,14 +4,14 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Arpgo.Basketball.Data.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<FmaBasketballDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<BasketballDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(FmaBasketballDbContext context)
+        protected override void Seed(BasketballDbContext context)
         {
             context.Reasons.AddOrUpdate(
                     x => x.Id,

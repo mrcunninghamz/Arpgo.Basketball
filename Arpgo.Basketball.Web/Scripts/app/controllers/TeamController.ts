@@ -160,7 +160,7 @@ module Fma.Controllers {
 
     angular.element(document)
         .ready(() => {
-            angular.module("fmaBasketballApp")
+            angular.module("BasketballApp")
                 .controller("RegisterTeamController", RegisterTeamController)
                 .controller("ManageTeamController", ManageTeamController);
 

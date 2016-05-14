@@ -32,7 +32,7 @@ module Fma.Directives {
 
     angular.element(document)
         .ready(() => {
-            var directives = angular.module("fmaBasketballApp");
+            var directives = angular.module("BasketballApp");
             directives.directive("compareTo", CompareTo.instance);
 
         });

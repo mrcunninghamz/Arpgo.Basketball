@@ -12,9 +12,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 namespace Arpgo.Basketball.Data
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
-    public class FmaBasketballDbContext : IdentityDbContext<ApplicationUser>, IFmaBasketballDbContext
+    public class BasketballDbContext : IdentityDbContext<ApplicationUser>, IBasketballDbContext
     {
-        public FmaBasketballDbContext()
+        public BasketballDbContext()
             : base("DefaultConnection", false)
         {
         }
@@ -26,9 +26,9 @@ namespace Arpgo.Basketball.Data
         public IDbSet<Reason> Reasons { get; set; }
 
 
-        public static FmaBasketballDbContext Create()
+        public static BasketballDbContext Create()
         {
-            return new FmaBasketballDbContext();
+            return new BasketballDbContext();
         }
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

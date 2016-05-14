@@ -2,7 +2,7 @@ var Fma;
 (function (Fma) {
     var BasketballApp = (function () {
         function BasketballApp() {
-            angular.module("fmaBasketballApp", ["ngRoute", "ngSanitize", "ui.bootstrap", "ui.bootstrap.showErrors", "Services"]);
+            angular.module("BasketballApp", ["ngRoute", "ngSanitize", "ui.bootstrap", "ui.bootstrap.showErrors", "Services"]);
         }
         return BasketballApp;
     }());

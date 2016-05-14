@@ -24,7 +24,7 @@ namespace Arpgo.Basketball.Web
             var config = GlobalConfiguration.Configuration;
 
             // REGISTER DEPENDENCIES
-            builder.RegisterType<FmaBasketballDbContext>().AsSelf().InstancePerRequest();
+            builder.RegisterType<BasketballDbContext>().AsSelf().InstancePerRequest();
             builder.RegisterType<ApplicationUserStore>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
             builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
             builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();

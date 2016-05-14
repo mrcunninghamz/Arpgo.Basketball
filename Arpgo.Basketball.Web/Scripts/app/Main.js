@@ -4,10 +4,10 @@ var Fma;
 (function (Fma) {
     var Main = (function () {
         function Main() {
-            var fmaBasketballApp = new Fma.BasketballApp();
+            var BasketballApp = new BasketballApp();
             angular.element(document)
                 .ready(function () {
-                angular.bootstrap(document, ["fmaBasketballApp"]);
+                angular.bootstrap(document, ["BasketballApp"]);
             });
         }
         return Main;

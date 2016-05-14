@@ -15,11 +15,11 @@ namespace Arpgo.Basketball.Web.Controllers
 {
     public class TeamController : ApiController
     {
-        private readonly FmaBasketballDbContext _dbContext;
+        private readonly BasketballDbContext _dbContext;
         private readonly ApplicationUserManager _userManager;
         private readonly IMapper _mapper;
 
-        public TeamController(FmaBasketballDbContext dbContext, ApplicationUserManager userManager, IMapper mapper)
+        public TeamController(BasketballDbContext dbContext, ApplicationUserManager userManager, IMapper mapper)
         {
             _dbContext = dbContext;
             _userManager = userManager;

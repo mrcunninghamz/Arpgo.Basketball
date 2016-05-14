@@ -4,11 +4,11 @@ module Fma {
     class Main
     {
         constructor() {
-            var fmaBasketballApp = new BasketballApp();
+            var BasketballApp = new BasketballApp();
 
             angular.element(document)
                 .ready(() => {
-                    angular.bootstrap(document, ["fmaBasketballApp"]);
+                    angular.bootstrap(document, ["BasketballApp"]);
                 });
         }
     }
