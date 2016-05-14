@@ -11,7 +11,7 @@ var Arpgo;
             });
         }
         return Main;
-    }());
+    })();
     var main = new Main();
 })(Arpgo || (Arpgo = {}));
 //# sourceMappingURL=Main.js.map

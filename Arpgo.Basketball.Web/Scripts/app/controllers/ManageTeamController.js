@@ -18,7 +18,7 @@ var Arpgo;
             }
             ManageTeamController.$inject = ["$scope", "$state", "DropDownService", "TeamService"];
             return ManageTeamController;
-        }());
+        })();
         Controllers.ManageTeamController = ManageTeamController;
     })(Controllers = Arpgo.Controllers || (Arpgo.Controllers = {}));
 })(Arpgo || (Arpgo = {}));

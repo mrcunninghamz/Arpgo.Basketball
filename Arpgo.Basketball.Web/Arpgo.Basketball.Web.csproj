@@ -322,6 +322,7 @@
     <Content Include="Areas\Team\Views\Manage\Index.cshtml" />
     <Content Include="Areas\Team\Views\AngularTemplates\Templates\EditTeam.cshtml" />
     <Content Include="Areas\Team\Views\AngularTemplates\Inline.cshtml" />
+    <Content Include="Areas\Team\Views\AngularTemplates\Templates\ViewTeam.cshtml" />
     <None Include="Scripts\vendors\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\vendors\jquery\jquery-1.10.2.js" />
     <Content Include="Scripts\vendors\jquery\jquery-1.10.2.min.js" />
@@ -376,7 +377,6 @@
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Scripts\app\partials\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -395,10 +395,14 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\app\BasketballApp.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\Constants.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\ManageTeamController.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\RegisterTeamController.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\Utilities.ts" />
     <TypeScriptCompile Include="Scripts\app\directives\CompareTo.ts" />
+    <TypeScriptCompile Include="Scripts\app\models\Interfaces.ts" />
     <TypeScriptCompile Include="Scripts\app\services\DropDownFactory.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\HomeController.ts" />
-    <TypeScriptCompile Include="Scripts\app\controllers\TeamController.ts" />
     <TypeScriptCompile Include="Scripts\app\models\Team.ts" />
     <TypeScriptCompile Include="Scripts\app\services\TeamFactory.ts" />
     <TypeScriptCompile Include="Scripts\app\Main.ts" />
