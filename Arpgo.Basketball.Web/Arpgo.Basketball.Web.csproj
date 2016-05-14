@@ -314,7 +314,6 @@
     <Content Include="Areas\Team\Views\web.config" />
     <Content Include="Areas\Team\Views\Register\Index.cshtml" />
     <Content Include="Areas\Team\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Team\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Scripts\vendors\angular\angular-resource.min.js.map" />
     <Content Include="Areas\Team\Views\Register\Thanks.cshtml" />
@@ -322,6 +321,7 @@
     <Content Include="Areas\Team\Views\Manage\Index.cshtml" />
     <Content Include="Areas\Team\Views\AngularTemplates\Templates\EditTeam.cshtml" />
     <Content Include="Areas\Team\Views\AngularTemplates\Inline.cshtml" />
+    <Content Include="Areas\Team\Views\AngularTemplates\Templates\ViewTeam.cshtml" />
     <None Include="Scripts\vendors\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\vendors\jquery\jquery-1.10.2.js" />
     <Content Include="Scripts\vendors\jquery\jquery-1.10.2.min.js" />
@@ -376,6 +376,7 @@
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Team\Views\Shared\" />
     <Folder Include="Scripts\app\partials\" />
   </ItemGroup>
   <ItemGroup>
@@ -395,10 +396,14 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\app\BasketballApp.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\Constants.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\ManageTeamController.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\RegisterTeamController.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\Utilities.ts" />
     <TypeScriptCompile Include="Scripts\app\directives\CompareTo.ts" />
     <TypeScriptCompile Include="Scripts\app\services\DropDownFactory.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\HomeController.ts" />
-    <TypeScriptCompile Include="Scripts\app\controllers\TeamController.ts" />
+    <TypeScriptCompile Include="Scripts\app\models\Interfaces.ts" />
     <TypeScriptCompile Include="Scripts\app\models\Team.ts" />
     <TypeScriptCompile Include="Scripts\app\services\TeamFactory.ts" />
     <TypeScriptCompile Include="Scripts\app\Main.ts" />
