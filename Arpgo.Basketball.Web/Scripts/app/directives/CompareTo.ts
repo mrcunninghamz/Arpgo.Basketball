@@ -1,5 +1,5 @@
 ﻿
-module Fma.Directives {
+module Arpgo.Directives {
     export interface ICompareToScope extends ng.IScope {
         compareTo: any;
         compareToValue: string;

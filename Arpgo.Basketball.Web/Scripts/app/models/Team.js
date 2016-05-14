@@ -1,5 +1,5 @@
-var Fma;
-(function (Fma) {
+var Arpgo;
+(function (Arpgo) {
     var Models;
     (function (Models) {
         var Team = (function () {
@@ -14,6 +14,6 @@ var Fma;
             return CreateTeam;
         }());
         Models.CreateTeam = CreateTeam;
-    })(Models = Fma.Models || (Fma.Models = {}));
-})(Fma || (Fma = {}));
+    })(Models = Arpgo.Models || (Arpgo.Models = {}));
+})(Arpgo || (Arpgo = {}));
 //# sourceMappingURL=Team.js.map

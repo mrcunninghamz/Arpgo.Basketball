@@ -1,11 +1,11 @@
-var Fma;
-(function (Fma) {
+var Arpgo;
+(function (Arpgo) {
     var BasketballApp = (function () {
         function BasketballApp() {
-            angular.module("BasketballApp", ["ngRoute", "ngSanitize", "ui.bootstrap", "ui.bootstrap.showErrors", "Services"]);
+            angular.module("BasketballApp", ["ui.router", "ngSanitize", "ui.bootstrap", "ui.bootstrap.showErrors", "Services"]);
         }
         return BasketballApp;
     }());
-    Fma.BasketballApp = BasketballApp;
-})(Fma || (Fma = {}));
+    Arpgo.BasketballApp = BasketballApp;
+})(Arpgo || (Arpgo = {}));
 //# sourceMappingURL=BasketballApp.js.map

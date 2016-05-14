@@ -17,6 +17,7 @@ namespace Arpgo.Basketball.Web
                       "~/Scripts/vendors/angular/angular-sanitize.js",
                       "~/Scripts/vendors/angular-ui/ui-bootstrap-tpls.js",
                       "~/Scripts/vendors/angular-ui/showErrors.js",
+                      "~/Scripts/vendors/angular-ui/angular-ui-router.js",
                       "~/Scripts/app/controllers/*.js",
                       "~/Scripts/app/services/*.js",
                       "~/Scripts/app/directives/*.js",

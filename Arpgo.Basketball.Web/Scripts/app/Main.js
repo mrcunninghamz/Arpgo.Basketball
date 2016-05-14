@@ -1,10 +1,10 @@
 /// <reference path="../typings/angularjs/angular.d.ts" />
 /// <reference path="../typings/angularjs/angular-route.d.ts" />
-var Fma;
-(function (Fma) {
+var Arpgo;
+(function (Arpgo) {
     var Main = (function () {
         function Main() {
-            var BasketballApp = new BasketballApp();
+            var BasketballApp = new Arpgo.BasketballApp();
             angular.element(document)
                 .ready(function () {
                 angular.bootstrap(document, ["BasketballApp"]);
@@ -13,5 +13,5 @@ var Fma;
         return Main;
     }());
     var main = new Main();
-})(Fma || (Fma = {}));
+})(Arpgo || (Arpgo = {}));
 //# sourceMappingURL=Main.js.map

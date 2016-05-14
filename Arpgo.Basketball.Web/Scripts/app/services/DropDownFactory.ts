@@ -1,4 +1,4 @@
-﻿module Fma.Services {
+﻿module Arpgo.Services {
     export class DropDownFactory {
         static $inject = ["$resource"];
         

@@ -1,0 +1,11 @@
+﻿@model System.Collections.Generic.IEnumerable<string>
+@{
+    Layout = null;
+}
+
+@foreach (string templateName in Model)
+{
+    <script type="text/ng-template" id="templates/@templateName">
+        @{ Html.RenderPartial("~/Areas/Team/Views/AngularTemplates/Templates/" + templateName + ".cshtml");}
+    </script>
+}

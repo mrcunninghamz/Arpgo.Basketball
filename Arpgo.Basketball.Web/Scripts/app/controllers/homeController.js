@@ -1,5 +1,5 @@
-var Fma;
-(function (Fma) {
+var Arpgo;
+(function (Arpgo) {
     var Controllers;
     (function (Controllers) {
         var HomeController = (function () {
@@ -23,6 +23,6 @@ var Fma;
             .ready(function () {
             angular.module("BasketballApp").controller("HomeController", HomeController);
         });
-    })(Controllers = Fma.Controllers || (Fma.Controllers = {}));
-})(Fma || (Fma = {}));
+    })(Controllers = Arpgo.Controllers || (Arpgo.Controllers = {}));
+})(Arpgo || (Arpgo = {}));
 //# sourceMappingURL=HomeController.js.map

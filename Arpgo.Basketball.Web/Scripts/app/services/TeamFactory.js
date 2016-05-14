@@ -1,5 +1,5 @@
-var Fma;
-(function (Fma) {
+var Arpgo;
+(function (Arpgo) {
     var Services;
     (function (Services) {
         var TeamFactory = (function () {
@@ -14,6 +14,6 @@ var Fma;
             return TeamFactory;
         }());
         Services.TeamFactory = TeamFactory;
-    })(Services = Fma.Services || (Fma.Services = {}));
-})(Fma || (Fma = {}));
+    })(Services = Arpgo.Services || (Arpgo.Services = {}));
+})(Arpgo || (Arpgo = {}));
 //# sourceMappingURL=TeamFactory.js.map

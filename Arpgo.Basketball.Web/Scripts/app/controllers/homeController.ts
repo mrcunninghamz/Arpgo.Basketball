@@ -1,4 +1,4 @@
-﻿module Fma.Controllers {
+﻿module Arpgo.Controllers {
     export class HomeController {
         static $inject = ["$scope"];
 

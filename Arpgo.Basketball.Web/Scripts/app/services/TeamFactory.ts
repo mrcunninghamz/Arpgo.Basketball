@@ -1,4 +1,4 @@
-﻿module Fma.Services {
+﻿module Arpgo.Services {
     export class TeamFactory {
         static $inject = ["$resource"];
 

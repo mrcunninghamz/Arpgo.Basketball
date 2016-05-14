@@ -1,5 +1,5 @@
-var Fma;
-(function (Fma) {
+var Arpgo;
+(function (Arpgo) {
     var Directives;
     (function (Directives) {
         var CompareTo = (function () {
@@ -30,6 +30,6 @@ var Fma;
             var directives = angular.module("BasketballApp");
             directives.directive("compareTo", CompareTo.instance);
         });
-    })(Directives = Fma.Directives || (Fma.Directives = {}));
-})(Fma || (Fma = {}));
+    })(Directives = Arpgo.Directives || (Arpgo.Directives = {}));
+})(Arpgo || (Arpgo = {}));
 //# sourceMappingURL=CompareTo.js.map

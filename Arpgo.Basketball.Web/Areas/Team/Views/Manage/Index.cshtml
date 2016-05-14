@@ -2,93 +2,31 @@
 @{
     ViewBag.Title = "Team Management";
 }
-<div ng-controller="ManageTeamController" class="row">
-    <h2>@ViewBag.Title</h2>
-    <form name="form" novalidate>
-        <div class="row">
-            <fieldset class="col-md-6">
-                <legend>Team Information</legend>
-                <div class="form-group col-md-12" show-errors>
-                    <label for="Name" class="control-label">@Html.DisplayNameFor(x => x.Name)</label>
-                    <input type="text" name="Name" class="form-control" ng-model="Model.Name" ng-required="true" />
-                    <span ng-show="(form.$submitted || form.Name.$touched) && form.Name.$error.required" class="help-block">Please enter your team's name</span>
-                </div>
-                <div class="form-group col-md-12" show-errors>
-                    <label for="CaptainName" class="control-label">@Html.DisplayNameFor(x => x.CaptainName)</label>
-                    <input type="text" name="CaptainName" class="form-control" ng-model="Model.CaptainName" ng-required="true" />
-                    <span ng-show="(form.$submitted || form.CaptainName.$touched) && form.CaptainName.$error.required" class="help-block">Please enter your team captain's name</span>
-                </div>
-                <div class="form-group col-md-6" show-errors>
-                    <label for="Division" class="control-label">@Html.DisplayNameFor(x => x.Division)</label>
-                    <select name="Division" class="form-control"
-                            ng-options="option.Label for option in Divisions track by option.Id"
-                            ng-model="Model.Division"
-                            ng-required="true"></select>
-                    <span ng-show="(form.$submitted || form.Division.$touched) && form.Division.$error.required" class="help-block">Please select a division</span>
+<div ui-view></div>
 
-                </div>
-                <div class="form-group col-md-6" show-errors ng-show="form.Division.$modelValue.Id > 0">
-                    <label for="SelectedReason" class="control-label">@Html.DisplayNameFor(x => x.Reason)</label>
-                    <select name="Reason" class="form-control"
-                            ng-options="option.Label for option in Reasons track by option.Id"
-                            ng-model="Model.Reason"
-                            ng-required="true"></select>
-                    <span ng-show="(form.$submitted || form.Reason.$touched) && form.Reason.$error.required" class="help-block">Please select a reason</span>
-                </div>
-                <div class="form-group col-md-12" show-errors ng-show="form.Reason.$modelValue.Id == 5">
-                    <label for="OtherReason" class="control-label">@Html.DisplayNameFor(x => x.OtherReason)</label>
-                    <input type="text" name="OtherReason" class="form-control" ng-model="Model.OtherReason" ng-required="form.Reason.$modelValue.Id == 5" />
-                    <span ng-show="(form.$submitted || form.OtherReason.$touched) && form.OtherReason.$error.required" class="help-block">Please enter a reason</span>
-                </div>
-            </fieldset>
-            <fieldset class="col-md-6">
-                <legend>Contact Information</legend>
-                <div class="form-group col-md-6" show-errors>
-                    <label for="HomePhoneNumber" class="control-label">@Html.DisplayNameFor(x => x.HomePhoneNumber)</label>
-                    <input type="tel" name="HomePhoneNumber" class="form-control" ng-model="Model.HomePhoneNumber" ng-required="true" />
-                    <span ng-show="(form.$submitted || form.HomePhoneNumber.$touched) && form.HomePhoneNumber.$error.required" class="help-block">Please enter a phone number</span>
-                </div>
-                <div class="form-group col-md-6" show-errors>
-                    <label for="AlternatePhoneNumber" class="control-label">@Html.DisplayNameFor(x => x.AlternatePhoneNumber)</label>
-                    <input type="tel" name="AlternatePhoneNumber" class="form-control" ng-model="Model.AlternatePhoneNumber" ng-required="false" />
-                    <span ng-show="(form.$submitted || form.AlternatePhoneNumber.$touched) && form.AlternatePhoneNumber.$error.required" class="help-block">Please enter a phone number</span>
-                </div>
-                <div class="form-group col-md-6" show-errors>
-                    <label for="Address1" class="control-label">@Html.DisplayNameFor(x => x.Address1)</label>
-                    <input type="text" name="Address1" class="form-control" ng-model="Model.Address1" ng-required="true" />
-                    <span ng-show="(form.$submitted || form.Address1.$touched) && form.Address1.$error.required" class="help-block">Please enter a street address</span>
-                </div>
-                <div class="form-group col-md-6" show-errors>
-                    <label for="Address2" class="control-label">@Html.DisplayNameFor(x => x.Address2)</label>
-                    <input type="text" name="Address2" class="form-control" ng-model="Model.Address2" />
-                </div>
-                <div class="form-group col-md-6" show-errors>
-                    <label for="City" class="control-label">@Html.DisplayNameFor(x => x.City)</label>
-                    <input type="text" name="City" class="form-control" ng-model="Model.City" ng-required="true" />
-                    <span ng-show="(form.$submitted || form.City.$touched) && form.City.$error.required" class="help-block">Please enter a city</span>
-                </div>
-                <div class="form-group col-md-4" show-errors>
-                    <label for="State" class="control-label">@Html.DisplayNameFor(x => x.State)</label>
-                    <select name="State" class="form-control"
-                            ng-options="option.Label for option in States track by option.Id"
-                            ng-model="Model.State"
-                            ng-required="true"></select>
-                    <span ng-show="(form.$submitted || form.State.$touched) && form.State.$error.required" class="help-block">Please select a state</span>
-                </div>
-                <div class="form-group col-md-2" show-errors>
-                    <label for="Zip" class="control-label">@Html.DisplayNameFor(x => x.Zip)</label>
-                    <input type="text" name="Zip" class="form-control" ng-model="Model.Zip" ng-required="true" />
-                    <span ng-show="(form.$submitted || form.Zip.$touched) && form.Zip.$error.required" class="help-block">Please enter a Zip</span>
+@Html.Action("Inline", "AngularTemplates")
 
-                </div>
-            </fieldset>
-        </div>
-        <div class="row">
-            <fieldset class="row col-md-12">
-                <div class="col-md-12 text-right">
-                    <input type="submit" class="btn btn-primary" ng-click="post(Model)" value="Update" />
-                </div>
-            </fieldset>
-        </div>
-    </form>
-</div>
+@section scripts {
+    <script>
+        angular.element(document)
+            .ready(() => {
+                angular.module("BasketballApp")
+                    .controller("ManageTeamController", Arpgo.Controllers.ManageTeamController).config(function ($stateProvider) {
+                        $stateProvider.state("Team",
+                            { // state for showing all movies
+                                url: "/View",
+                                templateUrl: "templates/ViewTeam",
+                                controller: "ManageTeamController"
+                            }).state("EditTeam",
+                            { // state for showing all movies
+                                url: "/Edit",
+                                templateUrl: "templates/EditTeam",
+                                controller: "ManageTeamController"
+                            });
+                    }).run($state => {
+                        $state.go("Team"); //make a transition to movies state when app starts
+                    });
+
+            });
+    </script>
+}

@@ -1,5 +1,5 @@
-var Fma;
-(function (Fma) {
+var Arpgo;
+(function (Arpgo) {
     var Services;
     (function (Services) {
         var DropDownFactory = (function () {
@@ -16,6 +16,6 @@ var Fma;
             services.factory("DropDownService", DropDownFactory);
             services.factory("TeamService", Services.TeamFactory);
         });
-    })(Services = Fma.Services || (Fma.Services = {}));
-})(Fma || (Fma = {}));
+    })(Services = Arpgo.Services || (Arpgo.Services = {}));
+})(Arpgo || (Arpgo = {}));
 //# sourceMappingURL=DropDownFactory.js.map

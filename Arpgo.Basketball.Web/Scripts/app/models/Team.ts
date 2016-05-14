@@ -1,4 +1,4 @@
-﻿module Fma.Models {
+﻿module Arpgo.Models {
 
     export class Team implements ITeam {
         Id: number;

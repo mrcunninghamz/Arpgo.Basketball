@@ -244,6 +244,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Team\Controllers\AngularTemplatesController.cs" />
     <Compile Include="Areas\Team\Controllers\CourtsideController.cs" />
     <Compile Include="Areas\Team\Controllers\ManageController.cs" />
     <Compile Include="Areas\Team\Controllers\RegisterController.cs" />
@@ -289,6 +290,8 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Scripts\vendors\angular-ui\angular-ui-router.js" />
+    <Content Include="Scripts\vendors\angular-ui\angular-ui-router.min.js" />
     <Content Include="Scripts\vendors\angular\angular-mocks.js" />
     <Content Include="Scripts\vendors\angular\angular-resource.js" />
     <Content Include="Scripts\vendors\angular\angular-resource.min.js" />
@@ -317,6 +320,8 @@
     <Content Include="Areas\Team\Views\Register\Thanks.cshtml" />
     <Content Include="Areas\Team\Views\Courtside\Index.cshtml" />
     <Content Include="Areas\Team\Views\Manage\Index.cshtml" />
+    <Content Include="Areas\Team\Views\AngularTemplates\Templates\EditTeam.cshtml" />
+    <Content Include="Areas\Team\Views\AngularTemplates\Inline.cshtml" />
     <None Include="Scripts\vendors\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\vendors\jquery\jquery-1.10.2.js" />
     <Content Include="Scripts\vendors\jquery\jquery-1.10.2.min.js" />
@@ -371,6 +376,7 @@
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Scripts\app\partials\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

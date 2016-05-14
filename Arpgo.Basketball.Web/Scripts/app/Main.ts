@@ -1,10 +1,10 @@
 ﻿/// <reference path="../typings/angularjs/angular.d.ts" />
 /// <reference path="../typings/angularjs/angular-route.d.ts" />
-module Fma {
+module Arpgo {
     class Main
     {
         constructor() {
-            var BasketballApp = new BasketballApp();
+            const BasketballApp = new Arpgo.BasketballApp();
 
             angular.element(document)
                 .ready(() => {
