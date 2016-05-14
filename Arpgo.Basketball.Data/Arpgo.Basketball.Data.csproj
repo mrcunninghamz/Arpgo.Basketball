@@ -90,7 +90,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Fma.Core\Arpgo.Core.csproj">
+    <ProjectReference Include="..\Arpgo.Core\Arpgo.Core.csproj">
       <Project>{1cc0d5ca-81ce-4d80-a383-d0c57033fc93}</Project>
       <Name>Arpgo.Core</Name>
     </ProjectReference>

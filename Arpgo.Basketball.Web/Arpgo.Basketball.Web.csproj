@@ -378,11 +378,11 @@
     <Content Include="Scripts\vendors\jquery\jquery-2.2.3.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Fma.Core\Arpgo.Core.csproj">
+    <ProjectReference Include="..\Arpgo.Core\Arpgo.Core.csproj">
       <Project>{1cc0d5ca-81ce-4d80-a383-d0c57033fc93}</Project>
       <Name>Arpgo.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FmaBasketball.Data\Arpgo.Basketball.Data.csproj">
+    <ProjectReference Include="..\Arpgo.Basketball.Data\Arpgo.Basketball.Data.csproj">
       <Project>{278a0684-5174-45b4-a100-e746ece1fc45}</Project>
       <Name>Arpgo.Basketball.Data</Name>
     </ProjectReference>
