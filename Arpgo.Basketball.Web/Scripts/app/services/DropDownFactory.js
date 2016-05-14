@@ -8,7 +8,7 @@ var Arpgo;
             }
             DropDownFactory.$inject = ["$resource"];
             return DropDownFactory;
-        }());
+        })();
         Services.DropDownFactory = DropDownFactory;
         angular.element(document)
             .ready(function () {

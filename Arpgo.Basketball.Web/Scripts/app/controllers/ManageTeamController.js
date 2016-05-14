@@ -19,7 +19,7 @@ var Arpgo;
             }
             ManageTeamController.$inject = ["$scope", "$state", "DropDownService", "TeamService"];
             return ManageTeamController;
-        }());
+        })();
         Controllers.ManageTeamController = ManageTeamController;
         angular.element(document)
             .ready(function () {

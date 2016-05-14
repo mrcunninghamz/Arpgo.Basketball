@@ -12,7 +12,7 @@ var Arpgo;
             }
             TeamFactory.$inject = ["$resource"];
             return TeamFactory;
-        }());
+        })();
         Services.TeamFactory = TeamFactory;
     })(Services = Arpgo.Services || (Arpgo.Services = {}));
 })(Arpgo || (Arpgo = {}));

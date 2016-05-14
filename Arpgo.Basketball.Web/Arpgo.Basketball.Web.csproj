@@ -376,8 +376,6 @@
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Areas\Team\Views\Shared\" />
-    <Folder Include="Scripts\app\partials\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -401,9 +399,9 @@
     <TypeScriptCompile Include="Scripts\app\controllers\RegisterTeamController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\Utilities.ts" />
     <TypeScriptCompile Include="Scripts\app\directives\CompareTo.ts" />
+    <TypeScriptCompile Include="Scripts\app\models\Interfaces.ts" />
     <TypeScriptCompile Include="Scripts\app\services\DropDownFactory.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\HomeController.ts" />
-    <TypeScriptCompile Include="Scripts\app\models\Interfaces.ts" />
     <TypeScriptCompile Include="Scripts\app\models\Team.ts" />
     <TypeScriptCompile Include="Scripts\app\services\TeamFactory.ts" />
     <TypeScriptCompile Include="Scripts\app\Main.ts" />

@@ -31,7 +31,7 @@ var Arpgo;
             }
             RegisterTeamController.$inject = ["$scope", "$window", "DropDownService", "TeamService"];
             return RegisterTeamController;
-        }());
+        })();
         Controllers.RegisterTeamController = RegisterTeamController;
         angular.element(document)
             .ready(function () {

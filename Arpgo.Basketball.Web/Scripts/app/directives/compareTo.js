@@ -23,7 +23,7 @@ var Arpgo;
                 return new CompareTo;
             };
             return CompareTo;
-        }());
+        })();
         Directives.CompareTo = CompareTo;
         angular.element(document)
             .ready(function () {
