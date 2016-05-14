@@ -10,7 +10,7 @@ namespace Arpgo.Basketball.Web.Controllers
 {
     public class UtilityController : ApiController
     {
-        [System.Web.Http.HttpGet]
+        [HttpGet]
         public IHttpActionResult GetType(string type)
         {
             List<EnumAttributes> enumAttributes;

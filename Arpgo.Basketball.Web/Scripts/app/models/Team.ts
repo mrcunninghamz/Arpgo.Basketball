@@ -2,6 +2,7 @@
 
     export class Team implements ITeam {
         Id: number;
+        AspNetUser_Id: string;
         Name: string;
         CaptainName: string;
         Division: string;
@@ -49,5 +50,12 @@
         City: string;
         State: string;
         Zip: string;
+    }
+
+    export class Player {
+        FirstName: string;
+        LastName: string;
+        Email: string;
+        AspNetUser_Id: string;
     }
 }

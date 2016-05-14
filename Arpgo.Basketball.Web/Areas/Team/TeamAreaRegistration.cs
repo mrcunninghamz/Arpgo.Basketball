@@ -19,6 +19,7 @@ namespace Arpgo.Basketball.Web.Areas.Team
                 "Team/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
+
         }
     }
 }

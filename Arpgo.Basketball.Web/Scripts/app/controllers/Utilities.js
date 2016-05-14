@@ -62,7 +62,7 @@ var Arpgo;
                 this.DropDownService = divisionService;
             }
             return Utilities;
-        })();
+        }());
         Controllers.Utilities = Utilities;
     })(Controllers = Arpgo.Controllers || (Arpgo.Controllers = {}));
 })(Arpgo || (Arpgo = {}));

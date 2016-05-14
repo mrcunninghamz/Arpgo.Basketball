@@ -4,7 +4,19 @@
 }
 
 <div ng-controller="ManageTeamController" class="row">
-    <div ui-view></div>
+    <div ui-view="TeamInfo"></div>
+</div>
+<div ng-controller="TeamPlayersController" class="row">
+    <div ui-view="PlayerInfo"></div>
+    @Html.Action("Template", "AngularTemplates", new { name = "AddPlayerModal"})
 </div>
 
 @Html.Action("Inline", "AngularTemplates")
+
+@section scripts{
+
+    <script language="javascript">
+        (function($, Arpgo) {
+        })(Arpgo || {}, $ || {});
+    </script>
+}

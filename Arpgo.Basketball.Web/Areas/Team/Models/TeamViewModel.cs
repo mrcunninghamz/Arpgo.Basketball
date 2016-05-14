@@ -51,5 +51,25 @@ namespace Arpgo.Basketball.Web.Areas.Team.Models
 
         [Required]
         public string Zip { get; set; }
+        
+        public string AspNetUser_Id { get; set; }
+    }
+
+    public class PlayerViewModel
+    {
+        public int Id { get; set; }
+
+        [Required]
+        public string FirstName { get; set; }
+
+        [Required]
+        public string LastName { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        public string AspNetUser_Id { get; set; }
     }
 }

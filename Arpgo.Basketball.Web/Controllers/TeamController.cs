@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -37,7 +38,25 @@ namespace Arpgo.Basketball.Web.Controllers
 
                 var model = _mapper.Map<Team,TeamViewModel>(team);
 
-                return Ok(model);
+                return Ok(new ApiResponse<TeamViewModel>(model));
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+        [HttpPut]
+        [Authorize]
+        public IHttpActionResult Put(TeamViewModel viewModel)
+        {
+            try
+            {
+                var team = _mapper.Map<TeamViewModel, Team>(viewModel);
+                _dbContext.Teams.AddOrUpdate(x => x.Id, team);
+                _dbContext.SaveChanges();
+
+                return Ok();
             }
             catch (Exception ex)
             {

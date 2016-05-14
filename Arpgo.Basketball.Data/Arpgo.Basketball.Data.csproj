@@ -65,20 +65,19 @@
     <Compile Include="Enums\DivisionType.cs" />
     <Compile Include="Enums\DocumentType.cs" />
     <Compile Include="Enums\ReasonType.cs" />
-    <Compile Include="FmaBasketballDbContext.cs" />
-    <Compile Include="IFmaBasketballDbContext.cs" />
-    <Compile Include="Migrations\201604301525490_initial.cs" />
-    <Compile Include="Migrations\201604301525490_initial.Designer.cs">
-      <DependentUpon>201604301525490_initial.cs</DependentUpon>
+    <Compile Include="BasketballDbContext.cs" />
+    <Compile Include="IBasketballDbContext.cs" />
+    <Compile Include="Migrations\201605141930569_init.cs" />
+    <Compile Include="Migrations\201605141930569_init.Designer.cs">
+      <DependentUpon>201605141930569_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201604302021140_baseDataBase.cs" />
-    <Compile Include="Migrations\201604302021140_baseDataBase.Designer.cs">
-      <DependentUpon>201604302021140_baseDataBase.cs</DependentUpon>
+    <Compile Include="Migrations\201605142016462_playerUpdate.cs" />
+    <Compile Include="Migrations\201605142016462_playerUpdate.Designer.cs">
+      <DependentUpon>201605142016462_playerUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605081503429_PlayerAndTeamUpdate.cs" />
-    <Compile Include="Migrations\201605090356173_TeamApplicationUserRelationship.cs" />
-    <Compile Include="Migrations\201605090356173_TeamApplicationUserRelationship.Designer.cs">
-      <DependentUpon>201605090356173_TeamApplicationUserRelationship.cs</DependentUpon>
+    <Compile Include="Migrations\201605142124374_playerUpdateNumberNames.cs" />
+    <Compile Include="Migrations\201605142124374_playerUpdateNumberNames.Designer.cs">
+      <DependentUpon>201605142124374_playerUpdateNumberNames.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Division.cs" />
@@ -100,18 +99,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604301525490_initial.resx">
-      <DependentUpon>201604301525490_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604302021140_baseDataBase.resx">
-      <DependentUpon>201604302021140_baseDataBase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605090356173_TeamApplicationUserRelationship.resx">
-      <DependentUpon>201605090356173_TeamApplicationUserRelationship.cs</DependentUpon>
-    </EmbeddedResource>
+    <Folder Include="Seeds\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Seeds\" />
+    <EmbeddedResource Include="Migrations\201605141930569_init.resx">
+      <DependentUpon>201605141930569_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605142016462_playerUpdate.resx">
+      <DependentUpon>201605142016462_playerUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605142124374_playerUpdateNumberNames.resx">
+      <DependentUpon>201605142124374_playerUpdateNumberNames.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

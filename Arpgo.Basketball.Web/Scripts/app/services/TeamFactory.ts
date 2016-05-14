@@ -11,4 +11,17 @@
             });
         }
     }
+
+    export class TeamPlayerFactory {
+        static $inject = ["$resource"];
+
+        constructor($resource: angular.resource.IResourceService) {
+            return $resource("/api/TeamPlayers/:id", { id: "@_id" },
+                {
+                    update: {
+                        method: "PUT"
+                    }
+                });
+        }
+    }
 }

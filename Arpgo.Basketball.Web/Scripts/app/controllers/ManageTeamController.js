@@ -8,36 +8,26 @@ var Arpgo;
                 this.Scope = $scope;
                 this.State = $state;
                 this.TeamService = teamService;
-                this.Scope.Model = this.TeamService.get();
-                this.State.go("Team");
+                this.TeamService.get(function (response) {
+                    _this.Scope.Model = response.Data;
+                });
                 var utilities = new Controllers.Utilities(this.Scope, divisionService);
                 utilities.InitiateDropDowns();
                 utilities.InitiateWatches();
                 this.Scope.edit = function () {
                     _this.State.go("EditTeam");
                 };
+                var state = this.State;
+                this.Scope.update = function () {
+                    _this.Scope.Model.$update(function () {
+                        state.go("Team");
+                    });
+                };
             }
             ManageTeamController.$inject = ["$scope", "$state", "DropDownService", "TeamService"];
             return ManageTeamController;
-        })();
+        }());
         Controllers.ManageTeamController = ManageTeamController;
-        angular.element(document)
-            .ready(function () {
-            angular.module("BasketballApp")
-                .controller("ManageTeamController", ManageTeamController)
-                .config(function ($stateProvider) {
-                $stateProvider.state("Team", {
-                    url: "/View",
-                    templateUrl: "templates/ViewTeam",
-                    controller: "ManageTeamController"
-                })
-                    .state("EditTeam", {
-                    url: "/Edit",
-                    templateUrl: "templates/EditTeam",
-                    controller: "ManageTeamController"
-                });
-            });
-        });
     })(Controllers = Arpgo.Controllers || (Arpgo.Controllers = {}));
 })(Arpgo || (Arpgo = {}));
 //# sourceMappingURL=ManageTeamController.js.map

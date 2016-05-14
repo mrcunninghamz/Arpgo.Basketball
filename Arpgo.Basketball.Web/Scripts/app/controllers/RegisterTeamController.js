@@ -31,13 +31,8 @@ var Arpgo;
             }
             RegisterTeamController.$inject = ["$scope", "$window", "DropDownService", "TeamService"];
             return RegisterTeamController;
-        })();
+        }());
         Controllers.RegisterTeamController = RegisterTeamController;
-        angular.element(document)
-            .ready(function () {
-            angular.module("BasketballApp")
-                .controller("RegisterTeamController", RegisterTeamController);
-        });
     })(Controllers = Arpgo.Controllers || (Arpgo.Controllers = {}));
 })(Arpgo || (Arpgo = {}));
 //# sourceMappingURL=RegisterTeamController.js.map

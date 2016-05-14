@@ -25,9 +25,9 @@ namespace Arpgo.Basketball.Web.Areas.Team.Controllers
             if (name == null || !Regex.IsMatch(name, @"^[-\w]+$"))
                 throw new ArgumentException("Illegal template name", "name");
 
-            string relativeViewPath = string.Format("~/Views/AngularTemplates/Templates/{0}.cshtml", name);
+            string relativeViewPath = string.Format("~/Areas/Team/Views/AngularTemplates/Templates/{0}.cshtml", name);
 
-            return View(relativeViewPath);
+            return PartialView(relativeViewPath);
         }
     }
 }

@@ -25,7 +25,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Locker Room<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    @Html.ActionLink("Manage Team", "Index", new { controller = "Manage", area = "Team" })
+                                    <a href="@Url.Action("Index", "Manage", new { area = "Team" })/#/TeamInfo">Manage Team</a>
                                 </li>
                             </ul>
                         </li>
@@ -45,13 +45,6 @@
         </footer>
     </div>
     @Scripts.Render("~/app")
-    <script language="javascript">
-        (function (Arpgo) {
-            // your page initialization code here
-            // the DOM will be available here
-
-        })(Arpgo || {});
-    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.Reflection;
+using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using Arpgo.Basketball.Data;
@@ -32,8 +33,8 @@ namespace Arpgo.Basketball.Web
             builder.Register<IDataProtectionProvider>(c => app.GetDataProtectionProvider()).InstancePerRequest();
 
             // REGISTER CONTROLLERS SO DEPENDENCIES ARE CONSTRUCTOR INJECTED
-            builder.RegisterControllers(typeof(MvcApplication).Assembly);
-            builder.RegisterApiControllers(typeof(MvcApplication).Assembly);
+            builder.RegisterControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             builder.RegisterModule(new AutoMapperModule());
 
             // BUILD THE CONTAINER

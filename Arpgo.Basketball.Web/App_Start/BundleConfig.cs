@@ -18,10 +18,10 @@ namespace Arpgo.Basketball.Web
                       "~/Scripts/vendors/angular-ui/ui-bootstrap-tpls.js",
                       "~/Scripts/vendors/angular-ui/showErrors.js",
                       "~/Scripts/vendors/angular-ui/angular-ui-router.js",
-                      "~/Scripts/app/controllers/*.js",
                       "~/Scripts/app/services/*.js",
                       "~/Scripts/app/directives/*.js",
                       "~/Scripts/app/models/*.js",
+                      "~/Scripts/app/controllers/*.js",
                       "~/Scripts/app/BasketballApp.js",
                       "~/Scripts/app/Main.js"));
 
