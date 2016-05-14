@@ -40,4 +40,10 @@ module Arpgo.Controllers {
             //}
         }
     }
+
+    angular.element(document)
+        .ready(() => {
+            angular.module("BasketballApp")
+                .controller("RegisterTeamController", RegisterTeamController);
+        });
 }

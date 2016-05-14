@@ -19,12 +19,6 @@ namespace Arpgo.Basketball.Web.Areas.Team
                 "Team/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
-
-            context.MapRoute(
-                "AngularTemplates", 
-                "Team/templates/{name}",
-                new { controller = "AngularTemplates", action = "Template" }
-            );
         }
     }
 }

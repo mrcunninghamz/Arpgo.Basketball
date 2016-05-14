@@ -13,6 +13,7 @@ module Arpgo.Controllers {
             this.TeamService = teamService;
 
             this.Scope.Model = this.TeamService.get();
+            this.State.go("Team");
 
             const utilities = new Utilities(this.Scope, divisionService);
             utilities.InitiateDropDowns();
@@ -24,4 +25,23 @@ module Arpgo.Controllers {
         }
 
     }
+    angular.element(document)
+        .ready(() => {
+            angular.module("BasketballApp")
+                .controller("ManageTeamController", ManageTeamController)
+                .config(function($stateProvider) {
+                    $stateProvider.state("Team",
+                        { // state for showing all movies
+                            url: "/View",
+                            templateUrl: "templates/ViewTeam",
+                            controller: "ManageTeamController"
+                        })
+                        .state("EditTeam",
+                        { // state for showing all movies
+                            url: "/Edit",
+                            templateUrl: "templates/EditTeam",
+                            controller: "ManageTeamController"
+                        });
+                });
+        });
 }

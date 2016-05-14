@@ -2,31 +2,9 @@
 @{
     ViewBag.Title = "Team Management";
 }
-<div ui-view></div>
+
+<div ng-controller="ManageTeamController" class="row">
+    <div ui-view></div>
+</div>
 
 @Html.Action("Inline", "AngularTemplates")
-
-@section scripts {
-    <script>
-        angular.element(document)
-            .ready(() => {
-                angular.module("BasketballApp")
-                    .controller("ManageTeamController", Arpgo.Controllers.ManageTeamController).config(function ($stateProvider) {
-                        $stateProvider.state("Team",
-                            { // state for showing all movies
-                                url: "/View",
-                                templateUrl: "templates/ViewTeam",
-                                controller: "ManageTeamController"
-                            }).state("EditTeam",
-                            { // state for showing all movies
-                                url: "/Edit",
-                                templateUrl: "templates/EditTeam",
-                                controller: "ManageTeamController"
-                            });
-                    }).run($state => {
-                        $state.go("Team"); //make a transition to movies state when app starts
-                    });
-
-            });
-    </script>
-}
