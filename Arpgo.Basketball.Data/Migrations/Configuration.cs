@@ -36,7 +36,8 @@ namespace Arpgo.Basketball.Data.Migrations
             context.Roles.AddOrUpdate(
                     x => x.Id,
                     new IdentityRole { Id = "cd9d9a9f-9acb-4761-b52e-e4784f3a978b", Name = "Admin" },
-                    new IdentityRole { Id = "b04c0862-f48e-4d30-ac29-727b911c9a63", Name = "Team Sponsor" }
+                    new IdentityRole { Id = "b04c0862-f48e-4d30-ac29-727b911c9a63", Name = "Team Sponsor" },
+                    new IdentityRole { Id = "9099fd10-2f4c-4d13-bff0-5add508076ca", Name = "Player" }
                 );
         }
     }

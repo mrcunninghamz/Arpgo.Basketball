@@ -9,6 +9,7 @@ namespace Arpgo.Basketball.Data.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Email { get; set; }
         public string Number { get; set; }
         public string HomePhoneNumber { get; set; }
         public string AlternatePhoneNumber { get; set; }
@@ -17,12 +18,13 @@ namespace Arpgo.Basketball.Data.Models
         public string City { get; set; }
         public string State { get; set; }
         public string Zip { get; set; }
+        public int Status { get; set; }
         public DateTime DateOfBirth { get; set; }
         public bool IsAtLeastSixteen { get; set; }
         public bool IsFamilyMember { get; set; }
 
 
-        public int Team_Id { get; set; }
+        public int? Team_Id { get; set; }
         public string AspNetUser_Id { get; set; }
 
 

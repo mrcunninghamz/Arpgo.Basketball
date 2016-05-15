@@ -2,7 +2,7 @@ module Arpgo.Controllers {
     export class RegisterTeamController implements IRegisterTeam {
         static $inject = ["$scope", "$window", "DropDownService", "TeamService"];
         
-        Scope: any;
+        Scope: IRegisterTeamScope;
         PasswordRegex: string;
         Window: ng.IWindowService;
         TeamService: angular.resource.IResourceClass<angular.resource.IResource<any>>;

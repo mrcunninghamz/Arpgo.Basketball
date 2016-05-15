@@ -1,23 +1,26 @@
-﻿    <h2>@ViewBag.Title</h2>
-    <form name="form" novalidate>
-        <div class="row">
+﻿    <form name="form" novalidate class="panel-body">
             <fieldset class="col-md-6">
                 <legend>Team Information</legend>
                 <div class="form-group col-md-12" show-errors>
                     <label for="Name" class="control-label">Team Name</label>
-                    <input type="text" name="Name" class="form-control" ng-model="Model.Name" ng-required="true" />
+                    <input type="text" name="Name" class="form-control" ng-model="Team.Data.Name" ng-required="true" />
                     <span ng-show="(form.$submitted || form.Name.$touched) && form.Name.$error.required" class="help-block">Please enter your team's name</span>
                 </div>
-                <div class="form-group col-md-12" show-errors>
-                    <label for="CaptainName" class="control-label">Team Captain</label>
-                    <input type="text" name="CaptainName" class="form-control" ng-model="Model.CaptainName" ng-required="true" />
-                    <span ng-show="(form.$submitted || form.CaptainName.$touched) && form.CaptainName.$error.required" class="help-block">Please enter your team captain's name</span>
+                <div class="form-group col-md-6" show-errors>
+                    <label for="CaptainFirstName" class="control-label">Last Name</label>
+                    <input type="text" name="CaptainFirstName" class="form-control" ng-model="Team.Data.CaptainFirstName" ng-required="true" />
+                    <span ng-show="(form.$submitted || form.CaptainFirstName.$touched) && form.CaptainFirstName.$error.required" class="help-block">Please enter your team captain's first name</span>
+                </div>
+                <div class="form-group col-md-6" show-errors>
+                    <label for="CaptainLastName" class="control-label">First Name</label>
+                    <input type="text" name="CaptainLastName" class="form-control" ng-model="Team.Data.CaptainLastName" ng-required="true" />
+                    <span ng-show="(form.$submitted || form.CaptainLastName.$touched) && form.CaptainLastName.$error.required" class="help-block">Please enter your team captain's last name</span>
                 </div>
                 <div class="form-group col-md-6" show-errors>
                     <label for="Division" class="control-label">Division</label>
                     <select name="Division" class="form-control"
                             ng-options="option.Label for option in Divisions track by option.Id"
-                            ng-model="Model.Division"
+                            ng-model="Team.Data.Division"
                             ng-required="true"></select>
                     <span ng-show="(form.$submitted || form.Division.$touched) && form.Division.$error.required" class="help-block">Please select a division</span>
 
@@ -26,13 +29,13 @@
                     <label for="SelectedReason" class="control-label">Reason</label>
                     <select name="Reason" class="form-control"
                             ng-options="option.Label for option in Reasons track by option.Id"
-                            ng-model="Model.Reason"
+                            ng-model="Team.Data.Reason"
                             ng-required="true"></select>
                     <span ng-show="(form.$submitted || form.Reason.$touched) && form.Reason.$error.required" class="help-block">Please select a reason</span>
                 </div>
                 <div class="form-group col-md-12" show-errors ng-show="form.Reason.$modelValue.Id == 5">
                     <label for="OtherReason" class="control-label">Other Reason</label>
-                    <input type="text" name="OtherReason" class="form-control" ng-model="Model.OtherReason" ng-required="form.Reason.$modelValue.Id == 5" />
+                    <input type="text" name="OtherReason" class="form-control" ng-model="Team.Data.OtherReason" ng-required="form.Reason.$modelValue.Id == 5" />
                     <span ng-show="(form.$submitted || form.OtherReason.$touched) && form.OtherReason.$error.required" class="help-block">Please enter a reason</span>
                 </div>
             </fieldset>
@@ -40,49 +43,44 @@
                 <legend>Contact Information</legend>
                 <div class="form-group col-md-6" show-errors>
                     <label for="HomePhoneNumber" class="control-label">Home Phone Number</label>
-                    <input type="tel" name="HomePhoneNumber" class="form-control" ng-model="Model.HomePhoneNumber" ng-required="true" />
+                    <input type="tel" name="HomePhoneNumber" class="form-control" ng-model="Team.Data.HomePhoneNumber" ng-required="true" />
                     <span ng-show="(form.$submitted || form.HomePhoneNumber.$touched) && form.HomePhoneNumber.$error.required" class="help-block">Please enter a phone number</span>
                 </div>
                 <div class="form-group col-md-6" show-errors>
                     <label for="AlternatePhoneNumber" class="control-label">Alternate Phone Number</label>
-                    <input type="tel" name="AlternatePhoneNumber" class="form-control" ng-model="Model.AlternatePhoneNumber" ng-required="false" />
+                    <input type="tel" name="AlternatePhoneNumber" class="form-control" ng-model="Team.Data.AlternatePhoneNumber" ng-required="false" />
                     <span ng-show="(form.$submitted || form.AlternatePhoneNumber.$touched) && form.AlternatePhoneNumber.$error.required" class="help-block">Please enter a phone number</span>
                 </div>
                 <div class="form-group col-md-6" show-errors>
                     <label for="Address1" class="control-label">Address 1</label>
-                    <input type="text" name="Address1" class="form-control" ng-model="Model.Address1" ng-required="true" />
+                    <input type="text" name="Address1" class="form-control" ng-model="Team.Data.Address1" ng-required="true" />
                     <span ng-show="(form.$submitted || form.Address1.$touched) && form.Address1.$error.required" class="help-block">Please enter a street address</span>
                 </div>
                 <div class="form-group col-md-6" show-errors>
                     <label for="Address2" class="control-label">Address 2</label>
-                    <input type="text" name="Address2" class="form-control" ng-model="Model.Address2" />
+                    <input type="text" name="Address2" class="form-control" ng-model="Team.Data.Address2" />
                 </div>
                 <div class="form-group col-md-6" show-errors>
                     <label for="City" class="control-label">City</label>
-                    <input type="text" name="City" class="form-control" ng-model="Model.City" ng-required="true" />
+                    <input type="text" name="City" class="form-control" ng-model="Team.Data.City" ng-required="true" />
                     <span ng-show="(form.$submitted || form.City.$touched) && form.City.$error.required" class="help-block">Please enter a city</span>
                 </div>
                 <div class="form-group col-md-4" show-errors>
                     <label for="State" class="control-label">State</label>
                     <select name="State" class="form-control"
                             ng-options="option.Label for option in States track by option.Id"
-                            ng-model="Model.State"
+                            ng-model="Team.Data.State"
                             ng-required="true"></select>
                     <span ng-show="(form.$submitted || form.State.$touched) && form.State.$error.required" class="help-block">Please select a state</span>
                 </div>
                 <div class="form-group col-md-2" show-errors>
                     <label for="Zip" class="control-label">Zip</label>
-                    <input type="text" name="Zip" class="form-control" ng-model="Model.Zip" ng-required="true" />
+                    <input type="text" name="Zip" class="form-control" ng-model="Team.Data.Zip" ng-required="true" />
                     <span ng-show="(form.$submitted || form.Zip.$touched) && form.Zip.$error.required" class="help-block">Please enter a Zip</span>
 
                 </div>
             </fieldset>
-        </div>
-        <div class="row">
-            <fieldset class="row col-md-12">
-                <div class="col-md-12 text-right">
-                    <input type="submit" class="btn btn-primary" ng-click="update()" value="Update" />
-                </div>
+            <fieldset class="row col-md-12  text-right">
+                <a class="btn btn-primary" ng-click="update()"><i class="glyphicon glyphicon-pencil"></i> Update Team Info</a>
             </fieldset>
-        </div>
     </form>

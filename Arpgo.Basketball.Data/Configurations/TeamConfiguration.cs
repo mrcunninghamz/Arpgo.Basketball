@@ -15,7 +15,8 @@ namespace Arpgo.Basketball.Data.Configurations
 
             //Required
             Property(t => t.Name).IsRequired();
-            Property(t => t.CaptainName).IsRequired();
+            Property(t => t.CaptainFirstName).IsRequired();
+            Property(t => t.CaptainLastName).IsRequired();
             Property(t => t.Email).IsRequired();
             Property(t => t.HomePhoneNumber).IsRequired();
             Property(t => t.AspNetUser_Id).IsRequired();

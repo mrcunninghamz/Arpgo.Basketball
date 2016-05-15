@@ -244,10 +244,14 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Player\Controllers\LockerRoomController.cs" />
+    <Compile Include="Areas\Player\PlayerAreaRegistration.cs" />
     <Compile Include="Areas\Team\Controllers\AngularTemplatesController.cs" />
     <Compile Include="Areas\Team\Controllers\CourtsideController.cs" />
     <Compile Include="Areas\Team\Controllers\ManageController.cs" />
     <Compile Include="Areas\Team\Controllers\RegisterController.cs" />
+    <Compile Include="Areas\Team\Models\ApiRequest.cs" />
+    <Compile Include="Areas\Team\Models\PlayerViewModel.cs" />
     <Compile Include="Areas\Team\Models\RegisterTeamViewModel.cs" />
     <Compile Include="Areas\Team\Models\ApiResponse.cs" />
     <Compile Include="Areas\Team\Models\TeamViewModel.cs" />
@@ -256,6 +260,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Controllers\TeamPlayersController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Controllers\UtilityController.cs" />
@@ -267,6 +272,7 @@
     <Compile Include="Models\AngularResponse.cs" />
     <Compile Include="Models\Constants\Roles.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="PlayerMapperProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="TeamMapperProfile.cs" />
@@ -326,6 +332,9 @@
     <Content Include="Areas\Team\Views\AngularTemplates\Templates\ViewTeam.cshtml" />
     <Content Include="Areas\Team\Views\AngularTemplates\Templates\ViewPlayers.cshtml" />
     <Content Include="Areas\Team\Views\AngularTemplates\Templates\AddPlayerModal.cshtml" />
+    <Content Include="Areas\Player\Views\web.config" />
+    <Content Include="Areas\Player\Views\LockerRoom\Index.cshtml" />
+    <Content Include="Areas\Player\Views\_ViewStart.cshtml" />
     <None Include="Scripts\vendors\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\vendors\jquery\jquery-1.10.2.js" />
     <Content Include="Scripts\vendors\jquery\jquery-1.10.2.min.js" />
@@ -380,6 +389,8 @@
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Player\Models\" />
+    <Folder Include="Areas\Player\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -400,16 +411,20 @@
     <TypeScriptCompile Include="Scripts\app\BasketballApp.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\Constants.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\ManageTeamController.ts" />
+    <TypeScriptCompile Include="Scripts\app\controllers\PlayerUtilities.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\RegisterTeamController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\TeamPlayersController.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\Utilities.ts" />
     <TypeScriptCompile Include="Scripts\app\directives\CompareTo.ts" />
     <TypeScriptCompile Include="Scripts\app\models\Interfaces.ts" />
+    <TypeScriptCompile Include="Scripts\app\models\Player.ts" />
     <TypeScriptCompile Include="Scripts\app\services\DropDownFactory.ts" />
     <TypeScriptCompile Include="Scripts\app\controllers\HomeController.ts" />
     <TypeScriptCompile Include="Scripts\app\models\Team.ts" />
     <TypeScriptCompile Include="Scripts\app\services\TeamFactory.ts" />
     <TypeScriptCompile Include="Scripts\app\Main.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angular-ui\angular-ui-router.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angular-ui\angular-ui-sortable.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-component-router.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
@@ -418,6 +433,7 @@
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-route.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\requirejs\require.d.ts" />
   </ItemGroup>

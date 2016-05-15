@@ -17,7 +17,6 @@ namespace Arpgo.Basketball.Data.Configurations
             Property(p => p.FirstName).IsRequired();
             Property(p => p.LastName).IsRequired();
             Property(p => p.DateOfBirth).HasColumnType("datetime2").IsRequired();
-            HasRequired(p => p.Team).WithMany(t => t.Players);
 
             //Optional
         }

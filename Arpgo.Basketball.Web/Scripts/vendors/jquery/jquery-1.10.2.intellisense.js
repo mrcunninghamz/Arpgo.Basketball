@@ -308,7 +308,7 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Parses a string into an array of DOM nodes.</summary>
     ///   <param name="data" type="String">HTML string to be parsed</param>
-    ///   <param name="context" type="Element">DOM element to serve as the context in which the HTML fragment will be created</param>
+    ///   <param name="context" type="Element">DOM element to serve as the dbContext in which the HTML fragment will be created</param>
     ///   <param name="keepScripts" type="Boolean">A Boolean indicating whether to include scripts passed in the HTML string</param>
     ///   <returns type="Array" />
     /// </signature>
@@ -341,26 +341,26 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Takes a function and returns a new one that will always have a particular context.</summary>
     ///   <param name="function" type="Function">The function whose context will be changed.</param>
-    ///   <param name="context" type="PlainObject">The object to which the context (this) of the function should be set.</param>
+    ///   <param name="context" type="PlainObject">The object to which the dbContext (this) of the function should be set.</param>
     ///   <returns type="Function" />
     /// </signature>
     /// <signature>
     ///   <summary>Takes a function and returns a new one that will always have a particular context.</summary>
-    ///   <param name="context" type="PlainObject">The object to which the context of the function should be set.</param>
-    ///   <param name="name" type="String">The name of the function whose context will be changed (should be a property of the context object).</param>
+    ///   <param name="context" type="PlainObject">The object to which the dbContext of the function should be set.</param>
+    ///   <param name="name" type="String">The name of the function whose context will be changed (should be a property of the dbContext object).</param>
     ///   <returns type="Function" />
     /// </signature>
     /// <signature>
     ///   <summary>Takes a function and returns a new one that will always have a particular context.</summary>
     ///   <param name="function" type="Function">The function whose context will be changed.</param>
-    ///   <param name="context" type="PlainObject">The object to which the context (this) of the function should be set.</param>
+    ///   <param name="context" type="PlainObject">The object to which the dbContext (this) of the function should be set.</param>
     ///   <param name="additionalArguments" type="Anything">Any number of arguments to be passed to the function referenced in the function argument.</param>
     ///   <returns type="Function" />
     /// </signature>
     /// <signature>
     ///   <summary>Takes a function and returns a new one that will always have a particular context.</summary>
-    ///   <param name="context" type="PlainObject">The object to which the context of the function should be set.</param>
-    ///   <param name="name" type="String">The name of the function whose context will be changed (should be a property of the context object).</param>
+    ///   <param name="context" type="PlainObject">The object to which the dbContext of the function should be set.</param>
+    ///   <param name="name" type="String">The name of the function whose context will be changed (should be a property of the dbContext object).</param>
     ///   <param name="additionalArguments" type="Anything">Any number of arguments to be passed to the function named in the name argument.</param>
     ///   <returns type="Function" />
     /// </signature>
@@ -464,7 +464,7 @@ intellisense.annotate(_object, {
   'fireWith': function() {
     /// <signature>
     ///   <summary>Call all callbacks in a list with the given context and arguments.</summary>
-    ///   <param name="context" type="">A reference to the context in which the callbacks in the list should be fired.</param>
+    ///   <param name="context" type="">A reference to the dbContext in which the callbacks in the list should be fired.</param>
     ///   <param name="args" type="">An argument, or array of arguments, to pass to the callbacks in the list.</param>
     ///   <returns type="Callbacks" />
     /// </signature>
@@ -740,7 +740,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Add elements to the set of matched elements.</summary>
     ///   <param name="selector" type="String">A string representing a selector expression to find additional elements to add to the set of matched elements.</param>
-    ///   <param name="context" type="Element">The point in the document at which the selector should begin matching; similar to the context argument of the $(selector, context) method.</param>
+    ///   <param name="context" type="Element">The point in the document at which the selector should begin matching; similar to the dbContext argument of the $(selector, dbContext) method.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -1077,7 +1077,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.</summary>
     ///   <param name="selector" type="String">A string containing a selector expression to match elements against.</param>
-    ///   <param name="context" type="Element">A DOM element within which a matching element may be found. If no context is passed in then the context of the jQuery set will be used instead.</param>
+    ///   <param name="context" type="Element">A DOM element within which a matching element may be found. If no dbContext is passed in then the dbContext of the jQuery set will be used instead.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -1102,7 +1102,7 @@ intellisense.annotate(jQuery.fn, {
     /// <returns type="jQuery" />
   },
   'context': function() {
-    /// <summary>The DOM node context originally passed to jQuery(); if none was passed then context will likely be the document.</summary>
+    /// <summary>The DOM node context originally passed to jQuery(); if none was passed then dbContext will likely be the document.</summary>
     /// <returns type="Element" />
   },
   'css': function() {
@@ -1550,7 +1550,7 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Accepts a string containing a CSS selector which is then used to match a set of elements.</summary>
     ///   <param name="selector" type="String">A string containing a selector expression</param>
-    ///   <param name="context" type="jQuery">A DOM Element, Document, or jQuery to use as context</param>
+    ///   <param name="context" type="jQuery">A DOM Element, Document, or jQuery to use as dbContext</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -2643,7 +2643,7 @@ intellisense.annotate(window, {
     /// <signature>
     ///   <summary>Accepts a string containing a CSS selector which is then used to match a set of elements.</summary>
     ///   <param name="selector" type="String">A string containing a selector expression</param>
-    ///   <param name="context" type="jQuery">A DOM Element, Document, or jQuery to use as context</param>
+    ///   <param name="context" type="jQuery">A DOM Element, Document, or jQuery to use as dbContext</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>

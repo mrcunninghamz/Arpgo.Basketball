@@ -1,5 +1,6 @@
 ﻿module Arpgo.Controllers {
     export class Utilities {
+        
         Scope: any;
         DropDownService: angular.resource.IResourceClass<angular.resource.IResource<any>>;
         constructor($scope: any, divisionService: any) {

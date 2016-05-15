@@ -36,9 +36,9 @@ namespace Arpgo.Basketball.Web.Controllers
                 var username = HttpContext.Current.User.Identity.GetUserName();
                 var team = _dbContext.Teams.First(x => x.User.UserName.Equals(username));
 
-                var model = _mapper.Map<Team,TeamViewModel>(team);
+                var model = _mapper.Map<Team,GetTeamViewModel>(team);
 
-                return Ok(new ApiResponse<TeamViewModel>(model));
+                return Ok(new ApiResponse<GetTeamViewModel>(model));
             }
             catch (Exception ex)
             {
@@ -48,11 +48,11 @@ namespace Arpgo.Basketball.Web.Controllers
 
         [HttpPut]
         [Authorize]
-        public IHttpActionResult Put(TeamViewModel viewModel)
+        public IHttpActionResult Put(ApiRequest<GetTeamViewModel> viewModel)
         {
             try
             {
-                var team = _mapper.Map<TeamViewModel, Team>(viewModel);
+                var team = _mapper.Map<GetTeamViewModel, Team>(viewModel.Data);
                 _dbContext.Teams.AddOrUpdate(x => x.Id, team);
                 _dbContext.SaveChanges();
 
@@ -114,7 +114,7 @@ namespace Arpgo.Basketball.Web.Controllers
         private async Task SendTeamSponsorEmailAsync(string userId, string teamName)
         {
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(userId);
-            var callbackUrl = Url.Link("Default", new { Controller = "Account", Action = "ConfirmEmail", userId = userId, code });
+            var callbackUrl = Url.Link("Default", new { Controller = "Account", Action = "ConfirmEmail", userId, code });
             await _userManager.SendEmailAsync(userId, "Team registration and next steps!", $"Hi! Finish registering your team, {teamName}, by clicking <a href=\"{callbackUrl}\">here</a>.");
         }
     }

@@ -4,7 +4,8 @@
         Id: number;
         AspNetUser_Id: string;
         Name: string;
-        CaptainName: string;
+        CaptainFirstName: string;
+        CaptainLasttName: string;
         Division: string;
         Reason: string;
         Email: string;
@@ -20,7 +21,8 @@
 
     export class CreateTeam implements ITeam {
         Name: string;
-        CaptainName: string;
+        CaptainFirstName: string;
+        CaptainLasttName: string;
         Division: string;
         Reason: string;
         Email: string;
@@ -38,7 +40,8 @@
 
     export interface ITeam {
         Name: string;
-        CaptainName: string;
+        CaptainFirstName: string;
+        CaptainLasttName: string;
         Division: string;
         Reason: string;
         Email: string;
@@ -50,12 +53,5 @@
         City: string;
         State: string;
         Zip: string;
-    }
-
-    export class Player {
-        FirstName: string;
-        LastName: string;
-        Email: string;
-        AspNetUser_Id: string;
     }
 }

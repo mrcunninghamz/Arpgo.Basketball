@@ -1,14 +1,41 @@
-﻿@model Arpgo.Basketball.Web.Areas.Team.Models.TeamViewModel
+﻿@model Arpgo.Basketball.Web.Areas.Team.Models.GetTeamViewModel
 @{
     ViewBag.Title = "Team Management";
 }
 
 <div ng-controller="ManageTeamController" class="row">
-    <div ui-view="TeamInfo"></div>
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Team {{Team.Data.Name}}</h4>
+                </div>
+            </div>
+        </div>
+        <div ui-view="TeamInfo"></div>
+    </div>
 </div>
 <div ng-controller="TeamPlayersController" class="row">
-    <div ui-view="PlayerInfo"></div>
-    @Html.Action("Template", "AngularTemplates", new { name = "AddPlayerModal"})
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Team Roster</h4>
+                </div>
+                <div class="col-md-6 text-right media-middle">
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addPlayer" ng-click="UpdateTeamId()"><i class="glyphicon glyphicon-plus"></i> Add A Player</a>
+                </div>
+
+            </div>
+        </div>
+        <div class="panel-body">
+            <p>This is the list of players on your team.</p>
+        </div>
+        <div ui-view="PlayerInfo"></div>
+    </div>
+    @Html.Action("Template", "AngularTemplates", new { name = "AddPlayerModal" })
 </div>
 
 @Html.Action("Inline", "AngularTemplates")
@@ -16,7 +43,7 @@
 @section scripts{
 
     <script language="javascript">
-        (function($, Arpgo) {
+        (function ($, Arpgo) {
         })(Arpgo || {}, $ || {});
     </script>
 }

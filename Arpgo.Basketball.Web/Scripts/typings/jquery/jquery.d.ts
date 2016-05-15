@@ -54,7 +54,7 @@ interface JQueryAjaxSettings {
      */
     contentType?: any;
     /**
-     * This object will be made the context of all Ajax-related callbacks. By default, the context is an object that represents the ajax settings used in the call ($.ajaxSettings merged with the settings passed to $.ajax).
+     * This object will be made the context of all Ajax-related callbacks. By default, the dbContext is an object that represents the ajax settings used in the call ($.ajaxSettings merged with the settings passed to $.ajax).
      */
     context?: any;
     /**
@@ -238,7 +238,7 @@ interface JQueryCallback {
     /**
      * Call all callbacks in a list with the given context and arguments.
      * 
-     * @param context A reference to the context in which the callbacks in the list should be fired.
+     * @param context A reference to the dbContext in which the callbacks in the list should be fired.
      * @param arguments An argument, or array of arguments, to pass to the callbacks in the list.
      */
     fireWith(context?: any, args?: any[]): JQueryCallback;
@@ -751,7 +751,7 @@ interface JQueryStatic {
      * Accepts a string containing a CSS selector which is then used to match a set of elements.
      *
      * @param selector A string containing a selector expression
-     * @param context A DOM Element, Document, or jQuery to use as context
+     * @param context A DOM Element, Document, or jQuery to use as dbContext
      */
     (selector: string, context?: Element|JQuery): JQuery;
 
@@ -932,15 +932,15 @@ interface JQueryStatic {
      * Takes a function and returns a new one that will always have a particular context.
      *
      * @param fnction The function whose context will be changed.
-     * @param context The object to which the context (this) of the function should be set.
+     * @param context The object to which the dbContext (this) of the function should be set.
      * @param additionalArguments Any number of arguments to be passed to the function referenced in the function argument.
      */
     proxy(fnction: (...args: any[]) => any, context: Object, ...additionalArguments: any[]): any;
     /**
      * Takes a function and returns a new one that will always have a particular context.
      *
-     * @param context The object to which the context (this) of the function should be set.
-     * @param name The name of the function whose context will be changed (should be a property of the context object).
+     * @param context The object to which the dbContext (this) of the function should be set.
+     * @param name The name of the function whose context will be changed (should be a property of the dbContext object).
      * @param additionalArguments Any number of arguments to be passed to the function named in the name argument.
      */
     proxy(context: Object, name: string, ...additionalArguments: any[]): any;
@@ -1157,7 +1157,7 @@ interface JQueryStatic {
      * Parses a string into an array of DOM nodes.
      *
      * @param data HTML string to be parsed
-     * @param context DOM element to serve as the context in which the HTML fragment will be created
+     * @param context DOM element to serve as the dbContext in which the HTML fragment will be created
      * @param keepScripts A Boolean indicating whether to include scripts passed in the HTML string
      */
     parseHTML(data: string, context?: HTMLElement, keepScripts?: boolean): any[];
@@ -1166,7 +1166,7 @@ interface JQueryStatic {
      * Parses a string into an array of DOM nodes.
      *
      * @param data HTML string to be parsed
-     * @param context DOM element to serve as the context in which the HTML fragment will be created
+     * @param context DOM element to serve as the dbContext in which the HTML fragment will be created
      * @param keepScripts A Boolean indicating whether to include scripts passed in the HTML string
      */
     parseHTML(data: string, context?: Document, keepScripts?: boolean): any[];
@@ -2576,7 +2576,7 @@ interface JQuery {
     unload(eventData?: any, handler?: (eventObject: JQueryEventObject) => any): JQuery;
 
     /**
-     * The DOM node context originally passed to jQuery(); if none was passed then context will likely be the document. (DEPRECATED from v1.10)
+     * The DOM node context originally passed to jQuery(); if none was passed then dbContext will likely be the document. (DEPRECATED from v1.10)
      */
     context: Element;
 
@@ -2848,7 +2848,7 @@ interface JQuery {
      * Add elements to the set of matched elements.
      * 
      * @param selector A string representing a selector expression to find additional elements to add to the set of matched elements.
-     * @param context The point in the document at which the selector should begin matching; similar to the context argument of the $(selector, context) method.
+     * @param context The point in the document at which the selector should begin matching; similar to the dbContext argument of the $(selector, dbContext) method.
      */
     add(selector: string, context?: Element): JQuery;
     /**
@@ -2887,7 +2887,7 @@ interface JQuery {
      * For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.
      * 
      * @param selector A string containing a selector expression to match elements against.
-     * @param context A DOM element within which a matching element may be found. If no context is passed in then the context of the jQuery set will be used instead.
+     * @param context A DOM element within which a matching element may be found. If no dbContext is passed in then the dbContext of the jQuery set will be used instead.
      */
     closest(selector: string, context?: Element): JQuery;
     /**
@@ -2907,7 +2907,7 @@ interface JQuery {
      * Get an array of all the elements and selectors matched against the current element up through the DOM tree.
      * 
      * @param selectors An array or string containing a selector expression to match elements against (can also be a jQuery object).
-     * @param context A DOM element within which a matching element may be found. If no context is passed in then the context of the jQuery set will be used instead.
+     * @param context A DOM element within which a matching element may be found. If no dbContext is passed in then the dbContext of the jQuery set will be used instead.
      */
     closest(selectors: any, context?: Element): any[];
 

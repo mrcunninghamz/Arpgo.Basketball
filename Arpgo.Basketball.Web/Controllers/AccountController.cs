@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Arpgo.Basketball.Web.Models;
+using Arpgo.Basketball.Web.Models.Constants;
 using Arpgo.Core.Entity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -55,11 +56,13 @@ namespace Arpgo.Basketball.Web.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+
                     if (!string.IsNullOrEmpty(returnUrl))
                     {
                         return RedirectToLocal(returnUrl);
                     }
-                    return RedirectToAction("Index", "Courtside", new {area = "Team"});
+                    
+                    return RedirectToAction("Index", "Home");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

@@ -4,6 +4,7 @@ using AutoMapper;
 
 namespace Arpgo.Basketball.Web.Areas.Team.Controllers
 {
+    [Authorize]
     public class ManageController : Controller
     {
         private readonly BasketballDbContext _dbContext;

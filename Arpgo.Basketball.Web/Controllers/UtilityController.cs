@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Arpgo.Basketball.Data;
 using Arpgo.Basketball.Data.Enums;
+using Arpgo.Basketball.Web.Areas.Team.Models;
 using Arpgo.Basketball.Web.Models;
 using Arpgo.Core.Enums;
 using Arpgo.Core.Extensions;
@@ -10,6 +12,15 @@ namespace Arpgo.Basketball.Web.Controllers
 {
     public class UtilityController : ApiController
     {
+        private readonly BasketballDbContext _dbContext;
+        private readonly ApplicationUserManager _userManager;
+
+        public UtilityController(BasketballDbContext dbContext, ApplicationUserManager userManager)
+        {
+            _dbContext = dbContext;
+            _userManager = userManager;
+        }
+
         [HttpGet]
         public IHttpActionResult GetType(string type)
         {
@@ -43,6 +54,22 @@ namespace Arpgo.Basketball.Web.Controllers
             }
 
             return Ok(new AngularResponse<List<AngularSelectItemViewModel>>(responseObject));
+        }
+
+        [HttpGet]
+        public IHttpActionResult UserNameAvailable(string email)
+        {
+            var exists = _userManager.Users.Any(x => x.UserName.Equals(email));
+
+            return Ok(new ApiResponse<bool>(!exists));
+        }
+
+        [HttpGet]
+        public IHttpActionResult PlayerNumberAvailable(string number, int teamId)
+        {
+            var exists = _dbContext.Teams.Any(x => x.Id == teamId && x.Players.Any(p => p.Number.Equals(number)));
+
+            return Ok(new ApiResponse<bool>(!exists));
         }
 
         private List<AngularSelectItemViewModel> CreateAngularSelectItemList(List<EnumAttributes> enumAttributes)

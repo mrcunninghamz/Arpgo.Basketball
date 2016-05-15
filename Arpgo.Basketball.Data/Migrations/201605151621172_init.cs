@@ -26,7 +26,8 @@ namespace Arpgo.Basketball.Data.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false),
-                        CaptainName = c.String(nullable: false),
+                        CaptainFirstName = c.String(nullable: false),
+                        CaptainLastName = c.String(nullable: false),
                         Email = c.String(nullable: false),
                         OtherReason = c.String(),
                         HomePhoneNumber = c.String(nullable: false),
@@ -57,7 +58,10 @@ namespace Arpgo.Basketball.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false),
+                        FirstName = c.String(nullable: false),
+                        LastName = c.String(nullable: false),
+                        Email = c.String(),
+                        Number = c.String(),
                         HomePhoneNumber = c.String(),
                         AlternatePhoneNumber = c.String(),
                         Address1 = c.String(),
@@ -65,18 +69,22 @@ namespace Arpgo.Basketball.Data.Migrations
                         City = c.String(),
                         State = c.String(),
                         Zip = c.String(),
+                        Status = c.Int(nullable: false),
                         DateOfBirth = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
                         IsAtLeastSixteen = c.Boolean(nullable: false),
                         IsFamilyMember = c.Boolean(nullable: false),
+                        Team_Id = c.Int(nullable: false),
+                        AspNetUser_Id = c.String(maxLength: 128),
                         CreatedDate = c.DateTime(nullable: false),
                         CreatedBy = c.String(),
                         UpdatedDate = c.DateTime(nullable: false),
                         UpdatedBy = c.String(),
-                        Team_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.AspNetUser_Id)
                 .ForeignKey("dbo.Teams", t => t.Team_Id, cascadeDelete: true)
-                .Index(t => t.Team_Id);
+                .Index(t => t.Team_Id)
+                .Index(t => t.AspNetUser_Id);
             
             CreateTable(
                 "dbo.Documents",
@@ -99,19 +107,6 @@ namespace Arpgo.Basketball.Data.Migrations
             
             CreateTable(
                 "dbo.DocumentTypes",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        CreatedDate = c.DateTime(nullable: false),
-                        CreatedBy = c.String(),
-                        UpdatedDate = c.DateTime(nullable: false),
-                        UpdatedBy = c.String(),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.Reasons",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -182,6 +177,19 @@ namespace Arpgo.Basketball.Data.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
+                "dbo.Reasons",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        CreatedDate = c.DateTime(nullable: false),
+                        CreatedBy = c.String(),
+                        UpdatedDate = c.DateTime(nullable: false),
+                        UpdatedBy = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -198,11 +206,12 @@ namespace Arpgo.Basketball.Data.Migrations
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Teams", "Division_Id", "dbo.Divisions");
             DropForeignKey("dbo.Teams", "AspNetUser_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Teams", "Reason_Id", "dbo.Reasons");
+            DropForeignKey("dbo.Players", "Team_Id", "dbo.Teams");
+            DropForeignKey("dbo.Players", "AspNetUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Teams", "Reason_Id", "dbo.Reasons");
-            DropForeignKey("dbo.Players", "Team_Id", "dbo.Teams");
             DropForeignKey("dbo.Documents", "Player_Id", "dbo.Players");
             DropForeignKey("dbo.Documents", "DocumentType_Id", "dbo.DocumentTypes");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
@@ -213,16 +222,17 @@ namespace Arpgo.Basketball.Data.Migrations
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Documents", new[] { "Player_Id" });
             DropIndex("dbo.Documents", new[] { "DocumentType_Id" });
+            DropIndex("dbo.Players", new[] { "AspNetUser_Id" });
             DropIndex("dbo.Players", new[] { "Team_Id" });
             DropIndex("dbo.Teams", new[] { "AspNetUser_Id" });
             DropIndex("dbo.Teams", new[] { "Reason_Id" });
             DropIndex("dbo.Teams", new[] { "Division_Id" });
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Reasons");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.Reasons");
             DropTable("dbo.DocumentTypes");
             DropTable("dbo.Documents");
             DropTable("dbo.Players");

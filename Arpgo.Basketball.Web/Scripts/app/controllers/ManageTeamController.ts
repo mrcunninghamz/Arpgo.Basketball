@@ -1,19 +1,22 @@
 module Arpgo.Controllers {
     export class ManageTeamController implements IManageTeam {
-        static $inject = ["$scope", "$state", "DropDownService", "TeamService"];
+        static $inject = ["$scope", "$state", "DropDownService", "TeamService", "TeamDataService"];
 
-        Scope: any;
+        Scope: IManageTeamScope;
         PasswordRegex: string;
         State: any;
-        TeamService: angular.resource.IResourceClass<angular.resource.IResource<any>>;
+        TeamService: any;
+        TeamDataService: Controllers.ITeamDataService;
 
-        constructor($scope: IRegisterTeamScope, $state: any, divisionService: any, teamService: any) {
+        constructor($scope: IManageTeamScope, $state: any, divisionService: any, teamService: any, teamDataService: Controllers.ITeamDataService) {
             this.Scope = $scope;
             this.State = $state;
             this.TeamService = teamService;
+            this.TeamDataService = teamDataService;
 
-            this.TeamService.get((response) => {
-                this.Scope.Model = response.Data;
+            this.Scope.Team = this.TeamService.get((response) => {
+                this.Scope.Team.Data = response.Data;
+                this.TeamDataService.SetTeam(this.Scope.Team.Data);
             });
 
             const utilities = new Utilities(this.Scope, divisionService);
@@ -26,7 +29,7 @@ module Arpgo.Controllers {
 
             var state = this.State;
             this.Scope.update = () => {
-                this.Scope.Model.$update(() => {
+                this.Scope.Team.$update(() => {
                     state.go("Team");
                 });
             }

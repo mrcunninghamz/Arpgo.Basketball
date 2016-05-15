@@ -13,7 +13,7 @@ namespace Arpgo.Basketball.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201605141930569_init"; }
+            get { return "201605151621172_init"; }
         }
         
         string IMigrationMetadata.Source

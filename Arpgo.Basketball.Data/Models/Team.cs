@@ -7,7 +7,8 @@ namespace Arpgo.Basketball.Data.Models
     public class Team : AuditableEntity<int>
     {
         public string Name { get; set; }
-        public string CaptainName { get; set; }
+        public string CaptainFirstName { get; set; }
+        public string CaptainLastName { get; set; }
         public string Email { get; set; }
         public string OtherReason { get; set; }
         public string HomePhoneNumber { get; set; }

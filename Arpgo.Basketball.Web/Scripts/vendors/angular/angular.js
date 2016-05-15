@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @license AngularJS v1.5.5
  * (c) 2010-2016 Google, Inc. http://angularjs.org
  * License: MIT
@@ -300,7 +300,7 @@ function isArrayLike(obj) {
  *
  * @param {Object|Array} obj Object to iterate over.
  * @param {Function} iterator Iterator function.
- * @param {Object=} context Object to become context (`this`) for the iterator function.
+ * @param {Object=} context Object to become dbContext (`this`) for the iterator function.
  * @returns {Object|Array} Reference to `obj`.
  */
 
@@ -1895,7 +1895,7 @@ function assertArgFn(arg, name, acceptArrayAnnotation) {
 /**
  * throw error if the name given is hasOwnProperty
  * @param  {String} name    the name to test
- * @param  {String} context the context in which the name is used, such as module or directive
+ * @param  {String} context the dbContext in which the name is used, such as module or directive
  */
 function assertNotHasOwnProperty(name, context) {
   if (name === 'hasOwnProperty') {
@@ -12046,7 +12046,7 @@ function $InterpolateProvider() {
      * @returns {function(context)} an interpolation function which is used to compute the
      *    interpolated string. The function has these parameters:
      *
-     * - `context`: evaluation context for all expressions embedded in the interpolated text
+     * - `context`: evaluation dbContext for all expressions embedded in the interpolated text
      */
     function $interpolate(text, mustHaveExpression, trustedContext, allOrNothing) {
       // Provide a quick exit and simplified result function for text with no interpolation

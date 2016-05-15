@@ -1,4 +1,33 @@
-﻿<button class="btn btn-primary" data-toggle="modal" data-target="#addPlayer">Add A Player</button>
-<div class="text-center" ng-show="Model.length != 0">
-    <p>No Players</p>
-</div>
+﻿
+    <div class="text-center" ng-show="Players.Data.length == 0">
+        <p>No Players</p>
+    </div>
+    <div class="text-center" ng-show="Players.Data.length > 0">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center">Number</th>
+                        <th class="text-center">First Name</th>
+                        <th class="text-center">Last Name</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="Player in Players.Data">
+                    <td>{{Player.Number}}</td>
+                    <td>{{Player.FirstName}}</td>
+                    <td>{{Player.LastName}}</td>
+                    <td>{{Player.Email}}</td>
+                    <td>{{Player.Status}}</td>
+                    <td><a class="btn btn-danger btn-xs" data-toggle="tooltip" title="Delete Player" ng-click="delete(Player)"><i class="glyphicon glyphicon-minus"></i></a></td>
+                </tr>
+                </tbody>
+                <tfoot><tr>
+                    <td colspan="5"></td>
+                </tr></tfoot>
+            </table>
+        </div>
+    </div>

@@ -12,10 +12,15 @@
                     <input type="text" name="Name" class="form-control" ng-model="Model.Name" ng-required="true" />
                     <span ng-show="(form.$submitted || form.Name.$touched) && form.Name.$error.required" class="help-block">Please enter your team's name</span>
                 </div>
-                <div class="form-group col-md-12" show-errors>
-                    <label for="CaptainName" class="control-label">@Html.DisplayNameFor(x => x.CaptainName)</label>
-                    <input type="text" name="CaptainName" class="form-control" ng-model="Model.CaptainName" ng-required="true" />
-                    <span ng-show="(form.$submitted || form.CaptainName.$touched) && form.CaptainName.$error.required" class="help-block">Please enter your team captain's name</span>
+                <div class="form-group col-md-6" show-errors>
+                    <label for="CaptainFirstName" class="control-label">@Html.DisplayNameFor(x => x.CaptainFirstName)</label>
+                    <input type="text" name="CaptainFirstName" class="form-control" ng-model="Model.CaptainFirstName" ng-required="true" />
+                    <span ng-show="(form.$submitted || form.CaptainFirstName.$touched) && form.CaptainFirstName.$error.required" class="help-block">Please enter your team captain's first name</span>
+                </div>
+                <div class="form-group col-md-6" show-errors>
+                    <label for="CaptainLastName" class="control-label">@Html.DisplayNameFor(x => x.CaptainLastName)</label>
+                    <input type="text" name="CaptainLastName" class="form-control" ng-model="Model.CaptainLastName" ng-required="true" />
+                    <span ng-show="(form.$submitted || form.CaptainLastName.$touched) && form.CaptainLastName.$error.required" class="help-block">Please enter your team captain's last name</span>
                 </div>
                 <div class="form-group col-md-6" show-errors>
                     <label for="Division" class="control-label">@Html.DisplayNameFor(x => x.Division)</label>
@@ -87,9 +92,10 @@
                 <legend>User Information</legend>
                 <div class="form-group col-md-12" show-errors>
                     <label for="Email" class="control-label">@Html.DisplayNameFor(x => x.Email)</label>
-                    <input type="email" name="Email" class="form-control" ng-model="Model.Email" ng-required="true" />
+                    <input type="email" name="Email" class="form-control" ng-model="Model.Email" ng-required="true" user-check-exists="form.Email"/>
                     <span ng-show="(form.$submitted || form.Email.$touched) && form.Email.$error.required" class="help-block">Please enter your email address</span>
                     <span ng-show="(form.$submitted || form.Email.$touched) && form.Email.$error.email" class="help-block">Please enter a valid email address</span>
+                    <span ng-show="(form.$submitted || form.Email.$touched) && form.Email.$error.userAvailable" class="help-block">Email already taken</span>
                 </div>
                 <div class="form-group col-md-6" show-errors>
                     <label for="Password" class="control-label">@Html.DisplayNameFor(x => x.Password)</label>

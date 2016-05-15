@@ -1,19 +1,29 @@
 using System.ComponentModel.DataAnnotations;
+using Arpgo.Basketball.Data.Models;
 using Arpgo.Basketball.Web.Models;
 
 namespace Arpgo.Basketball.Web.Areas.Team.Models
 {
-    public class TeamViewModel
+    public class GetTeamViewModel : TeamViewModel
     {
         public int Id { get; set; }
+        
+        public string AspNetUser_Id { get; set; }
+    }
 
+    public class TeamViewModel
+    {
         [Required]
         [Display(Name = "Team Name")]
         public string Name { get; set; }
 
         [Required]
-        [Display(Name = "Team Captain")]
-        public string CaptainName { get; set; }
+        [Display(Name = "First Name")]
+        public string CaptainFirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string CaptainLastName { get; set; }
 
         [Required]
         [EmailAddress]
@@ -51,25 +61,5 @@ namespace Arpgo.Basketball.Web.Areas.Team.Models
 
         [Required]
         public string Zip { get; set; }
-        
-        public string AspNetUser_Id { get; set; }
-    }
-
-    public class PlayerViewModel
-    {
-        public int Id { get; set; }
-
-        [Required]
-        public string FirstName { get; set; }
-
-        [Required]
-        public string LastName { get; set; }
-
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-
-        public string AspNetUser_Id { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-// Type definitions for Angular JS 1.5
+﻿// Type definitions for Angular JS 1.5
 // Project: http://angularjs.org
 // Definitions by: Diego Vilar <http://github.com/diegovilar>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -92,7 +92,7 @@ declare namespace angular {
          *
          * @param obj Object to iterate over.
          * @param iterator Iterator function.
-         * @param context Object to become context (this) for the iterator function.
+         * @param context Object to become dbContext (this) for the iterator function.
          */
         forEach<T>(obj: T[], iterator: (value: T, key: number) => any, context?: any): any;
         /**
@@ -102,7 +102,7 @@ declare namespace angular {
          *
          * @param obj Object to iterate over.
          * @param iterator Iterator function.
-         * @param context Object to become context (this) for the iterator function.
+         * @param context Object to become dbContext (this) for the iterator function.
          */
         forEach<T>(obj: { [index: string]: T; }, iterator: (value: T, key: string) => any, context?: any): any;
         /**
@@ -112,7 +112,7 @@ declare namespace angular {
          *
          * @param obj Object to iterate over.
          * @param iterator Iterator function.
-         * @param context Object to become context (this) for the iterator function.
+         * @param context Object to become dbContext (this) for the iterator function.
          */
         forEach(obj: any, iterator: (value: any, key: any) => any, context?: any): any;
 
@@ -389,9 +389,9 @@ declare namespace angular {
         $submitted: boolean;
         $error: any;
         $pending: any;
-        $addControl(control: INgModelController): void;
-        $removeControl(control: INgModelController): void;
-        $setValidity(validationErrorKey: string, isValid: boolean, control: INgModelController): void;
+        $addControl(control: INgModelController | IFormController): void;
+        $removeControl(control: INgModelController | IFormController): void;
+        $setValidity(validationErrorKey: string, isValid: boolean, control: INgModelController | IFormController): void;
         $setDirty(): void;
         $setPristine(): void;
         $commitViewValue(): void;
